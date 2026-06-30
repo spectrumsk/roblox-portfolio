@@ -397,3 +397,41 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
         justify-self: center;
     }
 }
+/* Featured Group override */
+
+.group-card-thinner {
+  display: grid !important;
+  grid-template-columns: 160px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 28px !important;
+  padding: 24px !important;
+  min-height: 190px !important;
+}
+
+.group-image-container {
+  width: 160px !important;
+  height: 160px !important;
+  overflow: hidden !important;
+  border-radius: 0 !important;
+}
+
+.group-img-fluid {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.group-card-thinner .game-content {
+  padding: 0 !important;
+}
+
+.group-card-thinner h2 {
+  margin: 8px 0 0 !important;
+  font-size: clamp(2.4rem, 5vw, 3.5rem) !important;
+  line-height: 1 !important;
+}
+
+.group-card-thinner .btn {
+  justify-self: end !important;
+}
