@@ -1,0 +1,26 @@
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  res.setHeader('Content-Type', 'application/json');
+
+  const UNIVERSE_IDS = "5296881729,9375088027";
+  const GROUP_ID = "974814503";
+
+  try {
+    const [gameResponse, groupResponse] = await Promise.all([
+      fetch(`https://games.roblox.com/v1/games?universeIds=${UNIVERSE_IDS}`),
+      fetch(`https://groups.roblox.com/v1/groups/${GROUP_ID}`)
+    ]);
+
+    const gameData = await gameResponse.json();
+    const groupData = await groupResponse.json();
+
+    return res.status(200).json({
+      games: gameData.data || [],
+      groupMembers: groupData.memberCount || 0
+    });
+
+  } catch (error) {
+    return res.status(500).json({ error: "Failed to fetch live data from Roblox APIs" });
+  }
+}
