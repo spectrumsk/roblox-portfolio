@@ -3,7 +3,8 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Content-Type', 'application/json');
 
-  const UNIVERSE_IDS = "5296881729,9375088027";
+  // Verified Universe IDs: Archer Training (9807623580) & Tower Builders (9375088027)
+  const UNIVERSE_IDS = "9807623580,9375088027";
   const GROUP_ID = "974814503";
 
   try {
