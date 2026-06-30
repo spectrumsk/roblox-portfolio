@@ -34,9 +34,9 @@
         <p class="hero-copy-large">Building large scale Roblox experiences played by millions.</p>
         
         <div aria-label="Studio statistics" class="stats">
-          <div class="stat"><strong id="hero-members">500K+</strong><span>Members</span></div>
-          <div class="stat"><strong id="hero-visits">1.9B+</strong><span>Total Visits</span></div>
-          <div class="stat"><strong id="hero-playing">27K+</strong><span>Active Players</span></div>
+          <div class="stat"><strong id="hero-members">500K</strong><span>Members</span></div>
+          <div class="stat"><strong id="hero-visits">1.9B</strong><span>Total Visits</span></div>
+          <div class="stat"><strong id="hero-playing">27K</strong><span>Active Players</span></div>
         </div>
       </div>
     </div>
@@ -62,12 +62,12 @@
                alt="Archer Training Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="archer-visits">1.9B+ Visits</div>
+          <div class="pill" id="archer-visits">1.9B Visits</div>
           <h2>Archer Training</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="archer-playing">1M+</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="archer-playing">1M</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong>94%</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong>1.8M+</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong>1.8M</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
@@ -79,12 +79,12 @@
                alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="tower-visits">1.2B+ Visits</div>
+          <div class="pill" id="tower-visits">1.2B Visits</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="tower-playing">750K+</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="tower-playing">750K</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong>92%</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong>1.3M+</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong>1.3M</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
@@ -128,7 +128,7 @@
     </div>
 
     <div class="featured-group-content">
-      <div class="pill" id="group-pill-members">500K+ Members</div>
+      <div class="pill" id="group-pill-members">500K Members</div>
       <h2>Assassin's Inc</h2>
     </div>
 
@@ -227,9 +227,9 @@
 
       const formatMetric = (num) => {
         if (!num || isNaN(num)) return "0";
-        if (num >= 1e9) return (num / 1e9).toFixed(1).replace('.0', '') + 'B+';
-        if (num >= 1e6) return (num / 1e6).toFixed(1).replace('.0', '') + 'M+';
-        if (num >= 1e3) return (num / 1e3).toFixed(1).replace('.0', '') + 'K+';
+        if (num >= 1e9) return (num / 1e9).toFixed(1).replace('.0', '') + 'B';
+        if (num >= 1e6) return (num / 1e6).toFixed(1).replace('.0', '') + 'M';
+        if (num >= 1e3) return (num / 1e3).toFixed(1).replace('.0', '') + 'K';
         return num.toLocaleString();
       };
 
