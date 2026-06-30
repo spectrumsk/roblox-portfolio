@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -32,10 +31,8 @@
     <div class="shell hero-grid">
       <div>
         <img alt="Shadowstar" class="hero-logo" src="assets/hero-logo.png"/>
-        <p class="hero-copy">Building large scale Roblox experiences played by millions.</p>
-        <div aria-label="Roles" class="roles">
-          <span>Game Developer</span><span class="dot">•</span><span>Programmer</span><span class="dot">•</span><span>Studio Owner</span>
-        </div>
+        <p class="hero-copy-large">Building large scale Roblox experiences played by millions.</p>
+        
         <div aria-label="Studio statistics" class="stats">
           <div class="stat"><strong id="hero-members">500K+</strong><span>Members</span></div>
           <div class="stat"><strong id="hero-visits">1.9B+</strong><span>Total Visits</span></div>
@@ -68,7 +65,6 @@
         <div class="game-content">
           <div class="pill" id="archer-visits">1.9B+ Visits</div>
           <h2>Archer Training</h2>
-          <div class="role-line">Studio Owner <span class="dot">•</span> Lead Programmer</div>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="archer-playing">1M+</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong>94%</strong><span>Rating</span></div>
@@ -90,7 +86,6 @@
         <div class="game-content">
           <div class="pill" id="tower-visits">1.2B+ Visits</div>
           <h2>Tower Builders</h2>
-          <div class="role-line">Studio Owner <span class="dot">•</span> Lead Programmer</div>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="tower-playing">750K+</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong>92%</strong><span>Rating</span></div>
@@ -131,15 +126,13 @@
 
   <section class="shell group-section">
     <div class="section-title">Featured Group</div>
-    <article class="card group-card">
-      <div class="group-visual" aria-hidden="true">
-        <div class="assassin assassin-left"></div>
-        <div class="assassin assassin-right"></div>
+    <article class="card group-card-thinner">
+      <div class="group-image-container">
+        <img src="assets/group-placeholder.png" alt="Assassins Inc Logo" class="group-img-fluid"/>
       </div>
       <div class="game-content">
         <div class="pill" id="group-pill-members">500K+ Members</div>
         <h2>Assassins Inc</h2>
-        <div class="role-line">Group Owner</div>
         <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">View Group ↗</a>
       </div>
     </article>
@@ -190,7 +183,6 @@
 </footer>
 
 <script>
-  // Mobile Navigation Controller Logic
   const navButton = document.querySelector('.menu-button');
   const navMenu = document.querySelector('#primary-menu');
   const setMenu = (open) => {
@@ -206,7 +198,6 @@
     if (event.key === 'Escape') setMenu(false);
   });
 
-  // Animated Collapsible See-More Button Logic
   const seeMoreButton = document.querySelector('.see-more-btn');
   const extraGames = document.querySelector('#extra-games');
   if (seeMoreButton && extraGames) {
@@ -225,7 +216,6 @@
     });
   }
 
-  // Fetch Live Metrics Proxy Endpoint
   async function fetchLiveRobloxStats() {
     try {
       const response = await fetch('https://roblox-portfolio-alpha-one.vercel.app/api/roblox-stats');
@@ -245,7 +235,6 @@
       const archer = data.games.find(g => g.id === 9807623580);
       const tower = data.games.find(g => g.id === 9375088027);
 
-      // 1. Update Hero Aggregate Counters
       const totalVisits = (archer ? archer.visits : 0) + (tower ? tower.visits : 0);
       const totalPlaying = (archer ? archer.playing : 0) + (tower ? tower.playing : 0);
 
@@ -257,7 +246,6 @@
       if (heroVisitsEl && totalVisits > 0) heroVisitsEl.innerText = formatMetric(totalVisits);
       if (heroPlayingEl && totalPlaying > 0) heroPlayingEl.innerText = formatMetric(totalPlaying);
 
-      // 2. Update Archer Training Card 
       if (archer) {
         const archerVisitsEl = document.getElementById('archer-visits');
         const archerPlayingEl = document.getElementById('archer-playing');
@@ -265,7 +253,6 @@
         if (archerPlayingEl) archerPlayingEl.innerText = formatMetric(archer.playing);
       }
 
-      // 3. Update Tower Builders Card
       if (tower) {
         const towerVisitsEl = document.getElementById('tower-visits');
         const towerPlayingEl = document.getElementById('tower-playing');
@@ -273,7 +260,6 @@
         if (towerPlayingEl) towerPlayingEl.innerText = formatMetric(tower.playing);
       }
 
-      // 4. Update Featured Group Card Counters
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
         groupMembersEl.innerText = formatMetric(data.groupMembers) + " Members";
