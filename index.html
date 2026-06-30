@@ -120,12 +120,12 @@
     <div class="section-title">Featured Group</div>
     <article class="card group-card-thinner">
       <div class="group-image-container">
-        <img src="assets/group-placeholder.png" alt="Assassins Inc Logo" class="group-img-fluid"/>
+        <img src="https://tr.rbxcdn.com/180DAY-3b884dbe27a655042d8429fd3ed6d2b6/150/150/Image/Webp/noFilter" alt="Assassins Inc Logo" class="group-img-fluid"/>
       </div>
       <div class="game-content">
         <div class="pill" id="group-pill-members">500K+ Members</div>
         <h2>Assassins Inc</h2>
-        <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">View Group ↗</a>
+        <a class="btn" href="https://www.roblox.com/communities/974814503/Assassins-Inc#!/about" rel="noreferrer" target="_blank">View Group ↗</a>
       </div>
     </article>
   </section>
@@ -175,6 +175,7 @@
 </footer>
 
 <script>
+  // Script handles menu toggle, "See More" button, and API data fetching
   const navButton = document.querySelector('.menu-button');
   const navMenu = document.querySelector('#primary-menu');
   const setMenu = (open) => {
@@ -183,12 +184,8 @@
     navButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   };
   navButton.addEventListener('click', () => setMenu(!navMenu.classList.contains('is-open')));
-  navMenu.addEventListener('click', (event) => {
-    if (event.target.matches('a')) setMenu(false);
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMenu(false);
-  });
+  navMenu.addEventListener('click', (event) => { if (event.target.matches('a')) setMenu(false); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
 
   const seeMoreButton = document.querySelector('.see-more-btn');
   const extraGames = document.querySelector('#extra-games');
@@ -213,7 +210,6 @@
       const response = await fetch('https://roblox-portfolio-alpha-one.vercel.app/api/roblox-stats');
       if (!response.ok) return;
       const data = await response.json();
-
       if (!data || data.error) return;
 
       const formatMetric = (num) => {
@@ -258,10 +254,9 @@
       }
 
     } catch (err) {
-      console.warn("API proxy unreachable. Defaulting to fallback tokens.", err);
+      console.warn("API proxy unreachable.", err);
     }
   }
-
   window.addEventListener('DOMContentLoaded', fetchLiveRobloxStats);
 </script>
 </body>
