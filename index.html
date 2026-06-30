@@ -32,8 +32,8 @@
 <span>Game Developer</span><span class="dot">•</span><span>Programmer</span><span class="dot">•</span><span>Studio Owner</span>
 </div>
 <div aria-label="Studio statistics" class="stats">
-<div class="stat"><strong>340B+</strong><span>Experience Visits</span></div>
-<div class="stat"><strong>4.2M+</strong><span>Players Reached</span></div>
+<div class="stat"><strong id="hero-visits">340B+</strong><span>Experience Visits</span></div>
+<div class="stat"><strong id="hero-players">4.2M+</strong><span>Players Reached</span></div>
 <div class="stat"><strong>26%</strong><span>Platform DAU</span></div>
 </div>
 </div>
@@ -60,13 +60,13 @@
 <div class="arrow-line"></div>
 </div>
 <div class="game-content">
-<div class="pill">1.9B+ Visits</div>
+<div class="pill" id="game-1-pill">1.9B+ Visits</div>
 <h2>Archer Training</h2>
 <div class="role-line">Studio Owner <span class="dot">•</span> Lead Programmer</div>
 <div class="mini-stats">
-<div class="mini-stat"><strong>1M+</strong><span>Players</span></div>
+<div class="mini-stat"><strong id="game-1-active">1M+</strong><span>Active Players</span></div>
 <div class="mini-stat"><strong>94%</strong><span>Rating</span></div>
-<div class="mini-stat"><strong>1.8M+</strong><span>Favorites</span></div>
+<div class="mini-stat"><strong id="game-1-favorites">1.8M+</strong><span>Favorites</span></div>
 </div>
 <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
 </div>
@@ -81,13 +81,13 @@
 </div>
 </div>
 <div class="game-content">
-<div class="pill">1.2B+ Visits</div>
+<div class="pill" id="game-2-pill">1.2B+ Visits</div>
 <h2>Tower Builders</h2>
 <div class="role-line">Studio Owner <span class="dot">•</span> Lead Programmer</div>
 <div class="mini-stats">
-<div class="mini-stat"><strong>750K+</strong><span>Players</span></div>
+<div class="mini-stat"><strong id="game-2-active">750K+</strong><span>Active Players</span></div>
 <div class="mini-stat"><strong>92%</strong><span>Rating</span></div>
-<div class="mini-stat"><strong>1.3M+</strong><span>Favorites</span></div>
+<div class="mini-stat"><strong id="game-2-favorites">1.3M+</strong><span>Favorites</span></div>
 </div>
 <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
 </div>
@@ -102,7 +102,7 @@
 <h2>Assassins Inc</h2>
 <div class="role-line">Group Owner</div>
 <div class="mini-stats" style="max-width: 220px; margin-bottom: 0;">
-<div class="mini-stat"><strong>500K+</strong><span>Members</span></div>
+<div class="mini-stat"><strong id="group-member-count">500K+</strong><span>Members</span></div>
 </div>
 </div>
 <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">View Group ↗</a>
@@ -146,7 +146,9 @@
 <div aria-label="Footer links" class="footer-links"><a aria-label="Discord" class="footer-link" href="#contact"><svg fill="currentColor" viewbox="0 0 127.14 96.36" xmlns="http://www.w3.org/2000/svg"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36a77.7,77.7,0,0,0,6.89-11.11,68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.24,46,96.12,53,91.08,65.69,84.69,65.69Z"></path></svg><span>Discord</span></a><a aria-label="Email" class="footer-link" href="mailto:shadowstarstudios@gmail.com">✉ <span>Email</span></a></div>
 </div>
 </footer>
+
 <script>
+  // Mobile Navigation Controller Logic
   const navButton = document.querySelector('.menu-button');
   const navMenu = document.querySelector('#primary-menu');
   const setMenu = (open) => {
@@ -161,5 +163,61 @@
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenu(false);
   });
-</script></body>
+
+  // Fetch Live Metrics Proxy Endpoint
+  async function fetchLiveRobloxStats() {
+    try {
+      const response = await fetch('/api/roblox-stats');
+      if (!response.ok) return;
+      const data = await response.json();
+
+      if (!data || data.error) return;
+
+      let totalVisits = 0;
+
+      // Update Individual Game Content Cards 
+      if (data.games && data.games.length > 0) {
+        data.games.forEach((game, index) => {
+          totalVisits += game.visits || 0;
+          
+          const gameNum = index + 1;
+          const pillEl = document.getElementById(`game-${gameNum}-pill`);
+          const activeEl = document.getElementById(`game-${gameNum}-active`);
+          const favEl = document.getElementById(`game-${gameNum}-favorites`);
+
+          if (pillEl && game.visits) pillEl.innerText = formatMetric(game.visits) + " Visits";
+          if (activeEl && game.playing !== undefined) activeEl.innerText = formatMetric(game.playing);
+          if (favEl && game.favoritedCount !== undefined) favEl.innerText = formatMetric(game.favoritedCount);
+        });
+      }
+
+      // Update Hero Header Aggregates
+      const heroVisitsEl = document.getElementById('hero-visits');
+      if (heroVisitsEl && totalVisits > 0) {
+        heroVisitsEl.innerText = formatMetric(totalVisits);
+      }
+
+      // Update Featured Group Card Counters
+      const groupMembersEl = document.getElementById('group-member-count');
+      if (groupMembersEl && data.groupMembers) {
+        groupMembersEl.innerText = formatMetric(data.groupMembers);
+      }
+
+    } catch (err) {
+      console.warn("API proxy unreachable. Defaulting to fallback tokens.", err);
+    }
+  }
+
+  // Pure Number Formatting Utility
+  function formatMetric(num) {
+    if (!num || isNaN(num)) return "0";
+    if (num >= 1e9) return (num / 1e9).toFixed(1).replace('.0', '') + 'B+';
+    if (num >= 1e6) return (num / 1e6).toFixed(1).replace('.0', '') + 'M+';
+    if (num >= 1e3) return (num / 1e3).toFixed(1).replace('.0', '') + 'K+';
+    return num.toLocaleString();
+  }
+
+  window.addEventListener('DOMContentLoaded', fetchLiveRobloxStats);
+</script>
+</body>
 </html>
