@@ -180,7 +180,7 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
 
 .hero-copy-large {
   max-width: 720px;
-  margin: 24px auto 0;
+  margin: 4px auto 0;
   color: var(--text);
   font-size: clamp(1.25rem, 2.6vw, 1.75rem);
   line-height: 1.25;
