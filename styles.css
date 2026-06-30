@@ -101,9 +101,7 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
   transition: transform var(--ease), border-color var(--ease), background var(--ease), box-shadow var(--ease);
 }
 .btn:hover, .nav-cta:hover { transform: translateY(-2px); border-color: var(--border-blue); box-shadow: 0 0 26px rgba(47, 140, 255, 0.22); }
-.nav-cta {
-  padding-inline: 28px;
-}
+
 .site-nav {
   position: sticky;
   top: 0;
@@ -286,18 +284,74 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 }
 
 @media (min-width: 900px) {
-  .menu-button { display: none; }
-  .nav-links { position: static; display: flex; align-items: center; gap: 34px; padding: 0; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; opacity: 1; visibility: visible; transform: none; }
-  .nav-links a { padding: 0; }
-  .nav-links a:hover { background: transparent; }
-  .hero { padding-top: 78px; }
-  .game-card { grid-template-columns: 1.18fr 0.95fr; }
-  .game-card.reverse { grid-template-columns: 0.95fr 1.18fr; }
-  .game-card.reverse .game-image { order: 2; }
-  .game-content { align-self: center; padding: 38px; }
-  .about-grid, .contact-grid { grid-template-columns: 0.9fr 1.25fr; align-items: start; }
-  .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
-  section { padding: 72px 0; }
+  .menu-button {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-links a {
+    padding: 0;
+  }
+
+  /* Only the Roblox Profile button gets extra padding */
+  .nav-links .nav-cta {
+    padding-inline: 28px;
+  }
+
+  .nav-links a:hover {
+    background: transparent;
+  }
+
+  .hero {
+    padding-top: 78px;
+  }
+
+  .game-card {
+    grid-template-columns: 1.18fr 0.95fr;
+  }
+
+  .game-card.reverse {
+    grid-template-columns: 0.95fr 1.18fr;
+  }
+
+  .game-card.reverse .game-image {
+    order: 2;
+  }
+
+  .game-content {
+    align-self: center;
+    padding: 38px;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 0.9fr 1.25fr;
+    align-items: start;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  section {
+    padding: 72px 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
