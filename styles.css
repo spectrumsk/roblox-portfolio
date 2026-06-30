@@ -366,11 +366,6 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   margin-bottom: 16px;
 }
 
-.featured-group-content h2 {
-  margin: 0;
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
-  line-height: 1;
-}
 
 .featured-group-btn {
   justify-self: end;
