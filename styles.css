@@ -101,7 +101,9 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
   transition: transform var(--ease), border-color var(--ease), background var(--ease), box-shadow var(--ease);
 }
 .btn:hover, .nav-cta:hover { transform: translateY(-2px); border-color: var(--border-blue); box-shadow: 0 0 26px rgba(47, 140, 255, 0.22); }
-
+.nav-cta {
+  padding-inline: 28px;
+}
 .site-nav {
   position: sticky;
   top: 0;
