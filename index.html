@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Shadowstar Studios | Roblox Game Developer</title>
-<meta content="Shadowstar Studios builds Roblox experiences with a focus on gameplay systems, live operations, and performance." name="description"/>
-<link as="image" href="assets/full-logo.png" rel="preload" fetchpriority="high"/>
-<link href="styles.css" rel="stylesheet"/>
+
+<meta name="description" content="Shadowstar Studios builds Roblox experiences with a focus on gameplay systems, live operations, and performance."/>
+
+<meta property="og:title" content="Shadowstar Studios | Roblox Game Developer">
+<meta property="og:description" content="Building Roblox experiences played by millions.">
+<meta property="og:image" content="https://shadowstarstudios.com/assets/full-logo.png">
+<meta property="og:url" content="https://shadowstarstudios.com">
+<meta property="og:site_name" content="Shadowstar Studios">
+<meta property="og:type" content="website">
+  
+<link rel="canonical" href="https://shadowstarstudios.com">
+<link rel="icon" href="assets/logo-mark.png" type="image/png">
+<link rel="preload" as="image" href="assets/full-logo.png" fetchpriority="high">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip-link" href="#top">Skip to content</a>
@@ -16,12 +28,16 @@
     <a aria-label="Shadowstar Studios home" class="brand icon-only" href="#top">
       <img alt="" class="brand-img" src="assets/logo-mark.png"/>
     </a>
-    <button aria-controls="primary-menu" aria-expanded="false" aria-label="Open menu" class="menu-button" type="button">☰</button>
+<button aria-controls="primary-menu" aria-expanded="false" aria-label="Open menu" class="menu-button" type="button">
+  <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
     <div class="nav-links" id="primary-menu">
       <a href="#games">Games</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a class="nav-cta" href="https://www.roblox.com/users/392930417/profile" rel="noreferrer" target="_blank">Roblox Profile ↗</a>
+      <a class="nav-cta" href="https://www.roblox.com/users/392930417/profile" rel="noopener noreferrer" target="_blank">Roblox Profile ↗</a>
     </div>
   </div>
 </nav>
@@ -34,9 +50,9 @@
         <p class="hero-copy-large">Building Roblox experiences played by millions.</p>
         
         <div aria-label="Studio statistics" class="stats">
- <div class="stat"><strong id="hero-visits">--</strong><span>Total Play Sessions</span></div>
-          <div class="stat"><strong id="hero-playing">--</strong><span>Peak Concurrent Players</span></div>
-          <div class="stat"><strong id="hero-members">--</strong><span>Group Members</span></div>
+ <div class="stat"><strong id="hero-visits">4.4M</strong><span>Total Play Sessions</span></div>
+          <div class="stat"><strong id="hero-playing">3K</strong><span>Peak Concurrent Players</span></div>
+          <div class="stat"><strong id="hero-members">500K</strong><span>Group Members</span></div>
          
         </div>
       </div>
@@ -63,14 +79,14 @@
                alt="Archer Training Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="archer-visits">-- Visits</div>
+          <div class="pill" id="archer-visits">4.1M Visits</div>
           <h2>Archer Training</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="archer-playing">--</strong><span>Active Players</span></div>
-            <div class="mini-stat"><strong id="archer-rating">--</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong id="archer-favorites">--</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong id="archer-playing">750</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="archer-rating">98%</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="archer-favorites">250K</strong><span>Favorites</span></div>
           </div>
-          <a class="btn" href="https://www.roblox.com/games/131900597150149/Archer-Training" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
+          <a class="btn" href="https://www.roblox.com/games/131900597150149/Archer-Training" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
       </article>
 
@@ -80,14 +96,13 @@
                alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="tower-visits">-- Visits</div>
+          <div class="pill" id="tower-visits">219K Visits</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-           <!-- <div class="mini-stat"><strong id="tower-playing">--</strong><span>Active Players</span></div> -->
-            <div class="mini-stat"><strong id="tower-rating">--</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong id="tower-favorites">--</strong><span>Favorites</span></div>
+                      <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
           </div>
-          <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
+          <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
       </article>
 
@@ -104,21 +119,21 @@
       </div>
 
       <div class="game-content">
-        <div class="pill" id="worm-visits">Visits</div>
+        <div class="pill" id="worm-visits">77K Visits</div>
         <h2>Climb Scary Alien Worm Tower</h2>
 
         <div class="mini-stats">
           <div class="mini-stat">
-            <strong id="worm-rating">--</strong>
+            <strong id="worm-rating">89%</strong>
             <span>Rating</span>
           </div>
           <div class="mini-stat">
-            <strong id="worm-favorites">--</strong>
+            <strong id="worm-favorites">8.4K</strong>
             <span>Favorites</span>
           </div>
         </div>
 
-        <a class="btn" href="https://www.roblox.com/games/110726542966223/Climb-Scary-Alien-Worm-Tower" rel="noreferrer" target="_blank">
+        <a class="btn" href="https://www.roblox.com/games/110726542966223/Climb-Scary-Alien-Worm-Tower" rel="noopener noreferrer" target="_blank">
           Play on Roblox ↗
         </a>
       </div>
@@ -134,21 +149,21 @@
       </div>
 
       <div class="game-content">
-        <div class="pill" id="brainrot-visits">Visits</div>
+        <div class="pill" id="brainrot-visits">14K Visits</div>
         <h2>Brainrot Tower Go Up</h2>
 
         <div class="mini-stats">
           <div class="mini-stat">
-            <strong id="brainrot-rating">--</strong>
+            <strong id="brainrot-rating">68%</strong>
             <span>Rating</span>
           </div>
           <div class="mini-stat">
-            <strong id="brainrot-favorites">--</strong>
+            <strong id="brainrot-favorites">600</strong>
             <span>Favorites</span>
           </div>
         </div>
 
-        <a class="btn" href="https://www.roblox.com/games/124224155539492/Brainrot-Tower-Go-up" rel="noreferrer" target="_blank">
+        <a class="btn" href="https://www.roblox.com/games/124224155539492/Brainrot-Tower-Go-up" rel="noopener noreferrer" target="_blank">
           Play on Roblox ↗
         </a>
       </div>
@@ -174,14 +189,14 @@
     </div>
 
     <div class="featured-group-content">
-      <div class="pill" id="group-pill-members">-- Members</div>
+      <div class="pill" id="group-pill-members">569K Members</div>
       <h2>Assassin's Inc</h2>
     </div>
 
     <a
       class="btn featured-group-btn"
       href="https://www.roblox.com/communities/974814503/Assassins-Inc#!/about"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       View Group ↗
@@ -266,7 +281,7 @@
         <p>@dakr10</p>
       </div>
 
-      <a class="card contact-card" href="https://www.roblox.com/users/392930417/profile" target="_blank" rel="noreferrer">
+      <a class="card contact-card" href="https://www.roblox.com/users/392930417/profile" target="_blank" rel="noopener noreferrer">
         <div class="icon" aria-hidden="true">
           <svg class="contact-icon-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.2 2 22 5.2 18.8 22 2 18.8 5.2 2Zm6.2 7.4-.8 4.2 4.2.8.8-4.2-4.2-.8Z"/>
@@ -349,6 +364,9 @@
       };
 
    const totalVisits = data.games.reduce((sum, game) => sum + (game.visits || 0), 0);
+
+     // Current players across all games.
+      // Reserved for a future "Current Players" hero stat.
 const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
 if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers));
