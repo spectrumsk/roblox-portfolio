@@ -225,7 +225,13 @@ h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -
 .philosophy-grid, .contact-cards { display: grid; gap: 14px; }
 .info-card, .contact-card { min-height: 170px; padding: 22px; background: var(--surface); }
 
-.icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 18px; border-radius: 50%; background: rgba(47, 140, 255, 0.16); color: var(--blue); font-size: 1.5rem; box-shadow: 0 0 28px rgba(47, 140, 255, 0.18); }
+.icon {
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  color: var(--blue);
+  font-size: 2rem;
+}
 .info-card h3, .contact-card h3 { margin-bottom: 8px; }
 .info-card p, .contact-card p { color: var(--muted); font-size: 0.94rem; }
 .contact-icon-svg { display: block; width: 28px; height: 28px; }
