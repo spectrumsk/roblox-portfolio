@@ -289,8 +289,14 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 @media (min-width: 640px) {
   .stat:not(:first-child) { border-left: 1px solid rgba(255, 255, 255, 0.09); }
 
- .contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .footer-inner { flex-direction: row; align-items: center; }
+ .contact-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+  .footer-inner {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 @media (min-width: 900px) {
@@ -319,7 +325,6 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
     padding: 0;
   }
 
-  /* Only the Roblox Profile button gets extra padding */
   .nav-links .nav-cta {
     padding-inline: 28px;
   }
@@ -350,18 +355,24 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
     padding: 38px;
   }
 
-  .about-grid,
   .contact-grid {
+    grid-template-columns: 0.9fr 1.25fr;
+    align-items: start;
+  }
+
+  section {
+    padding: 72px 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .about-grid {
     grid-template-columns: 0.9fr 1.25fr;
     align-items: start;
   }
 
   .philosophy-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  section {
-    padding: 72px 0;
   }
 }
 
