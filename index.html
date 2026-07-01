@@ -298,18 +298,15 @@
       if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
       setEl('hero-playing', formatMetric(totalPlaying));
 
-      data.games.forEach((game) => {
-        const prefix = gameMap[game.id];
-        if (!prefix) return;
+  data.games.forEach(g => {
+  const prefix = gameMap[g.id];
+  if (!prefix) return;
 
-        setEl(`${prefix}-visits`, formatMetric(game.visits) + ' Visits');
-        setEl(`${prefix}-playing`, formatMetric(game.playing));
-        setEl(`${prefix}-favorites`, formatMetric(game.favoritedCount));
-
-        if (game.rating !== undefined && game.rating !== null) {
-          setEl(`${prefix}-rating`, game.rating + '%');
-        }
-      });
+  setEl(`${prefix}-visits`, formatMetric(g.visits) + " Visits");
+  setEl(`${prefix}-playing`, formatMetric(g.playing));
+  setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
+  setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
+});
 
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
