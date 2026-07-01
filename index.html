@@ -284,6 +284,11 @@
   const brainrot = data.games.find(g => g.id === 9540316091);
 const worm = data.games.find(g => g.id === 9565343275);
 
+      console.log("Brainrot:", brainrot);
+console.log("Worm:", worm);
+console.log(document.getElementById("brainrot-visits"));
+console.log(document.getElementById("worm-visits"));
+
       const totalVisits = (archer ? archer.visits : 0) + (tower ? tower.visits : 0);
       const totalPlaying = (archer ? archer.playing : 0) + (tower ? tower.playing : 0);
 
