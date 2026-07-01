@@ -81,8 +81,23 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0.025)
+  );
   box-shadow: var(--shadow-md);
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-blue);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn, .nav-cta {
@@ -107,7 +122,7 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
   top: 0;
   z-index: 100;
   padding: 10px 0;
-  background: rgba(5, 6, 8, 0.78);
+  background: rgba(5, 6, 8, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -207,7 +222,13 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
 
 .game-card { display: grid; overflow: hidden; }
 .game-image { min-height: 270px; position: relative; overflow: hidden; background: #16251a; }
+.game-image img {
+  transition: transform 250ms ease;
+}
 
+.game-card:hover .game-image img {
+  transform: scale(1.03);
+}
 
 .game-content { padding: 24px; }
 .pill { display: inline-flex; margin-bottom: 14px; padding: 6px 10px; border: 1px solid rgba(47, 140, 255, 0.22); border-radius: 9px; background: rgba(47, 140, 255, 0.18); color: var(--blue-soft); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.03em; text-transform: uppercase; }
