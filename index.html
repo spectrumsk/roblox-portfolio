@@ -34,9 +34,9 @@
         <p class="hero-copy-large">Building large scale Roblox experiences played by millions.</p>
         
         <div aria-label="Studio statistics" class="stats">
-          <div class="stat"><strong id="hero-members">500K</strong><span>Members</span></div>
-          <div class="stat"><strong id="hero-visits">1.9B</strong><span>Total Visits</span></div>
-          <div class="stat"><strong id="hero-playing">27K</strong><span>Active Players</span></div>
+          <div class="stat"><strong id="hero-members">--</strong><span>Members</span></div>
+          <div class="stat"><strong id="hero-visits">--</strong><span>Total Visits</span></div>
+          <div class="stat"><strong id="hero-playing">--</strong><span>Active Players</span></div>
         </div>
       </div>
     </div>
@@ -62,12 +62,12 @@
                alt="Archer Training Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="archer-visits">1.9B Visits</div>
+          <div class="pill" id="archer-visits">-- Visits</div>
           <h2>Archer Training</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="archer-playing">1M</strong><span>Active Players</span></div>
-            <div class="mini-stat"><strong>94%</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong>1.8M</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong id="archer-playing">--</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="archer-rating">--</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="archer-favorites">--</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/games/131900597150149/Archer-Training" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
@@ -79,12 +79,12 @@
                alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="tower-visits">1.2B Visits</div>
+          <div class="pill" id="tower-visits">-- Visits</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="tower-playing">750K</strong><span>Active Players</span></div>
-            <div class="mini-stat"><strong>92%</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong>1.3M</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong id="tower-playing">--</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="tower-rating">--</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="tower-favorites">--</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
@@ -174,7 +174,7 @@
     </div>
 
     <div class="featured-group-content">
-      <div class="pill" id="group-pill-members">500K Members</div>
+      <div class="pill" id="group-pill-members">-- Members</div>
       <h2>Assassin's Inc</h2>
     </div>
 
@@ -279,55 +279,38 @@
         return num.toLocaleString();
       };
 
-      const archer = data.games.find(g => g.id === 9807623580);
-      const tower = data.games.find(g => g.id === 9375088027);
-  const brainrot = data.games.find(g => g.id === 9540316091);
-const worm = data.games.find(g => g.id === 9565343275);
+      const setEl = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value;
+      };
 
-      console.log("Brainrot:", brainrot);
-console.log("Worm:", worm);
-console.log(document.getElementById("brainrot-visits"));
-console.log(document.getElementById("worm-visits"));
+      const gameMap = {
+        9807623580: 'archer',
+        9375088027: 'tower',
+        9540316091: 'brainrot',
+        9565343275: 'worm'
+      };
 
-      const totalVisits = (archer ? archer.visits : 0) + (tower ? tower.visits : 0);
-      const totalPlaying = (archer ? archer.playing : 0) + (tower ? tower.playing : 0);
+      const totalVisits = data.games.reduce((sum, game) => sum + (game.visits || 0), 0);
+      const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-      const heroMembersEl = document.getElementById('hero-members');
-      const heroVisitsEl = document.getElementById('hero-visits');
-      const heroPlayingEl = document.getElementById('hero-playing');
+      if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers));
+      if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
+      setEl('hero-playing', formatMetric(totalPlaying));
 
-      if (heroMembersEl && data.groupMembers) heroMembersEl.innerText = formatMetric(data.groupMembers);
-      if (heroVisitsEl && totalVisits > 0) heroVisitsEl.innerText = formatMetric(totalVisits);
-      if (heroPlayingEl && totalPlaying > 0) heroPlayingEl.innerText = formatMetric(totalPlaying);
+      data.games.forEach((game) => {
+        const prefix = gameMap[game.id];
+        if (!prefix) return;
 
-      if (archer) {
-        const archerVisitsEl = document.getElementById('archer-visits');
-        const archerPlayingEl = document.getElementById('archer-playing');
-        if (archerVisitsEl) archerVisitsEl.innerText = formatMetric(archer.visits) + " Visits";
-        if (archerPlayingEl) archerPlayingEl.innerText = formatMetric(archer.playing);
-      }
+        setEl(`${prefix}-visits`, formatMetric(game.visits) + ' Visits');
+        setEl(`${prefix}-playing`, formatMetric(game.playing));
+        setEl(`${prefix}-favorites`, formatMetric(game.favoritedCount));
 
-      if (tower) {
-        const towerVisitsEl = document.getElementById('tower-visits');
-        const towerPlayingEl = document.getElementById('tower-playing');
-        if (towerVisitsEl) towerVisitsEl.innerText = formatMetric(tower.visits) + " Visits";
-        if (towerPlayingEl) towerPlayingEl.innerText = formatMetric(tower.playing);
-      }
-if (brainrot) {
-  const brainrotVisitsEl = document.getElementById('brainrot-visits');
+        if (game.rating !== undefined && game.rating !== null) {
+          setEl(`${prefix}-rating`, game.rating + '%');
+        }
+      });
 
-  if (brainrotVisitsEl) {
-    brainrotVisitsEl.innerText = formatMetric(brainrot.visits) + " Visits";
-  }
-}
-
-if (worm) {
-  const wormVisitsEl = document.getElementById('worm-visits');
-
-  if (wormVisitsEl) {
-    wormVisitsEl.innerText = formatMetric(worm.visits) + " Visits";
-  }
-}
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
         groupMembersEl.innerText = formatMetric(data.groupMembers) + " Members";
