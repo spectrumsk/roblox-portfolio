@@ -271,10 +271,11 @@ h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -
   line-height: 1;
 }
 .info-card h3, .contact-card h3 { margin-bottom: 8px; }
-.info-card p, .contact-card p {
+.contact-card p {
   color: var(--muted);
   font-size: 0.94rem;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .contact-icon-svg { display: block; width: 28px; height: 28px; }
 
