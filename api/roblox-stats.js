@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 // Tower Builders: 9375088027
 // Brainrot Tower Go Up: 6203110996
 // Climb Scary Alien Worm Tower: 5241473212
-const UNIVERSE_IDS = "9807623580,9375088027,7575196962,6768393539";
+const UNIVERSE_IDS = "9807623580,9375088027,9540316091,9565343275";
 const GROUP_ID = "974814503";
 
   try {
