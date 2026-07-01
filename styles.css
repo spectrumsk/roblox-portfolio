@@ -413,11 +413,11 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 }
 
 #about {
-  padding-top: 0;
+  padding-top: 20px;
 }
 
 #contact {
-  padding-top: 0;
+  padding-top: 20px;
 }
 .featured-group-card {
   display: grid;
