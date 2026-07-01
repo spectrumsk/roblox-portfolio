@@ -169,7 +169,7 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
 .nav-links a { padding: 12px 14px; border-radius: var(--radius-sm); color: rgba(255, 255, 255, 0.84); transition: color var(--ease), background var(--ease); }
 .nav-links a:hover { color: var(--blue-soft); background: rgba(47, 140, 255, 0.12); }
 
-.hero { padding: 58px 0 28px; overflow: hidden; }
+.hero { padding: 58px 0 54px; overflow: hidden; }
 .hero-grid { display: grid; gap: 34px; justify-items: center; text-align: center; }
 h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92; letter-spacing: -0.08em; text-wrap: balance; }
 
@@ -304,6 +304,7 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 
   .hero {
     padding-top: 78px;
+    padding-bottom: 72px;
   }
 
   .game-card {
