@@ -36,7 +36,7 @@
         <div aria-label="Studio statistics" class="stats">
           <div class="stat"><strong id="hero-members">--</strong><span>Members</span></div>
           <div class="stat"><strong id="hero-visits">--</strong><span>Total Visits</span></div>
-          <div class="stat"><strong id="hero-playing">--</strong><span>Active Players</span></div>
+          <div class="stat"><strong id="hero-playing">--</strong><span>Peak Concurrent Players</span></div>
         </div>
       </div>
     </div>
@@ -291,12 +291,18 @@
         9565343275: 'worm'
       };
 
-      const totalVisits = data.games.reduce((sum, game) => sum + (game.visits || 0), 0);
-      const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
+   const totalVisits = data.games.reduce((sum, game) => sum + (game.visits || 0), 0);
+const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-      if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers));
-      if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
-      setEl('hero-playing', formatMetric(totalPlaying));
+if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers));
+if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
+
+// Live active players (kept for future use)
+// setEl('hero-playing', formatMetric(totalPlaying));
+
+// Manual peak concurrent players
+const peakConcurrent = "27K";
+setEl('hero-playing', peakConcurrent);
 
   data.games.forEach(g => {
   const prefix = gameMap[g.id];
