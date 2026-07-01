@@ -3,9 +3,13 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Content-Type', 'application/json');
 
-  // Verified Universe IDs: Archer Training (9807623580) & Tower Builders (9375088027)
-  const UNIVERSE_IDS = "9807623580,9375088027";
-  const GROUP_ID = "974814503";
+// Verified Universe IDs:
+// Archer Training: 9807623580
+// Tower Builders: 9375088027
+// Brainrot Tower Go Up: 6203110996
+// Climb Scary Alien Worm Tower: 5241473212
+const UNIVERSE_IDS = "9807623580,9375088027,6203110996,5241473212";
+const GROUP_ID = "974814503";
 
   try {
     const [gameResponse, groupResponse] = await Promise.all([
