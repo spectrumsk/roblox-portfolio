@@ -228,16 +228,16 @@ h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -
 .verified-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 16px 0 18px;
+  gap: 8px;
+  margin: 12px 0 20px;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
+  font-weight: 500;
+  color: var(--muted-text);
 }
 
 .verified-badge {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
