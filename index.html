@@ -90,25 +90,71 @@
         </div>
       </article>
 
-      <div class="extra-games-wrapper">
-        <div class="extra-games" id="extra-games" hidden>
-          <article class="card game-card">
-            <div class="game-image">
-              <img src="https://tr.rbxcdn.com/180DAY-f3027201610219a9511cdcb7d28ea781/768/432/Image/Webp/noFilter" 
-                   alt="Experimental Prototype" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            </div>
-            <div class="game-content">
-              <div class="pill">Experimental Build</div>
-              <h2>Systems Prototype</h2>
-              <div class="mini-stats">
-                <div class="mini-stat"><strong>Live</strong><span>Testing</span></div>
-                <div class="mini-stat"><strong>Core</strong><span>Systems</span></div>
-              </div>
-              <a class="btn" href="https://www.roblox.com/" rel="noreferrer" target="_blank">View on Roblox ↗</a>
-            </div>
-          </article>
-        </div>
+ <div class="extra-games-wrapper">
+  <div class="extra-games" id="extra-games" hidden>
+
+    <article class="card game-card">
+      <div class="game-image">
+        <img
+          src="https://tr.rbxcdn.com/180DAY-e4cc74b4b96b53dd7b750137b9e6e531/768/432/Image/Webp/noFilter"
+          alt="Brainrot Tower Go Up"
+          style="width: 100%; height: 100%; object-fit: cover; display: block;"
+        >
       </div>
+
+      <div class="game-content">
+        <div class="pill" id="brainrot-visits">Visits</div>
+        <h2>Brainrot Tower Go Up</h2>
+
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <strong id="brainrot-rating">--</strong>
+            <span>Rating</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="brainrot-favorites">--</strong>
+            <span>Favorites</span>
+          </div>
+        </div>
+
+        <a class="btn" href="https://www.roblox.com/games/124224155539492/Brainrot-Tower-Go-up" rel="noreferrer" target="_blank">
+          Play on Roblox ↗
+        </a>
+      </div>
+    </article>
+
+    <article class="card game-card reverse">
+      <div class="game-image">
+        <img
+          src="https://tr.rbxcdn.com/180DAY-344c3f471953bed286e6a6962f4d992c/768/432/Image/Webp/noFilter"
+          alt="Climb Scary Alien Worm Tower"
+          style="width: 100%; height: 100%; object-fit: cover; display: block;"
+        >
+      </div>
+
+      <div class="game-content">
+        <div class="pill" id="worm-visits">Visits</div>
+        <h2>Climb Scary Alien Worm Tower</h2>
+
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <strong id="worm-rating">--</strong>
+            <span>Rating</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="worm-favorites">--</strong>
+            <span>Favorites</span>
+          </div>
+        </div>
+
+        <a class="btn" href="https://www.roblox.com/games/110726542966223/Climb-Scary-Alien-Worm-Tower" rel="noreferrer" target="_blank">
+          Play on Roblox ↗
+        </a>
+      </div>
+    </article>
+
+  </div>
+</div>
 
       <div class="see-more-wrap">
         <button class="btn see-more-btn" type="button" aria-controls="extra-games" aria-expanded="false">See More</button>
@@ -235,6 +281,8 @@
 
       const archer = data.games.find(g => g.id === 9807623580);
       const tower = data.games.find(g => g.id === 9375088027);
+      const brainrot = data.games.find(g => g.id === 124224155539492);
+const worm = data.games.find(g => g.id === 110726542966223);
 
       const totalVisits = (archer ? archer.visits : 0) + (tower ? tower.visits : 0);
       const totalPlaying = (archer ? archer.playing : 0) + (tower ? tower.playing : 0);
@@ -260,7 +308,25 @@
         if (towerVisitsEl) towerVisitsEl.innerText = formatMetric(tower.visits) + " Visits";
         if (towerPlayingEl) towerPlayingEl.innerText = formatMetric(tower.playing);
       }
+if (brainrot) {
+  const brainrotVisitsEl = document.getElementById('brainrot-visits');
+  const brainrotRatingEl = document.getElementById('brainrot-rating');
+  const brainrotFavoritesEl = document.getElementById('brainrot-favorites');
 
+  if (brainrotVisitsEl) brainrotVisitsEl.innerText = formatMetric(brainrot.visits) + " Visits";
+  if (brainrotRatingEl && brainrot.rating) brainrotRatingEl.innerText = brainrot.rating + "%";
+  if (brainrotFavoritesEl && brainrot.favorites) brainrotFavoritesEl.innerText = formatMetric(brainrot.favorites);
+}
+
+if (worm) {
+  const wormVisitsEl = document.getElementById('worm-visits');
+  const wormRatingEl = document.getElementById('worm-rating');
+  const wormFavoritesEl = document.getElementById('worm-favorites');
+
+  if (wormVisitsEl) wormVisitsEl.innerText = formatMetric(worm.visits) + " Visits";
+  if (wormRatingEl && worm.rating) wormRatingEl.innerText = worm.rating + "%";
+  if (wormFavoritesEl && worm.favorites) wormFavoritesEl.innerText = formatMetric(worm.favorites);
+}
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
         groupMembersEl.innerText = formatMetric(data.groupMembers) + " Members";
