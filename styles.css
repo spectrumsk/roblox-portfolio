@@ -204,6 +204,7 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
 .section-title.blue { color: var(--blue-soft); }
 
 .game-stack { display: grid; gap: 18px; }
+
 .game-card { display: grid; overflow: hidden; }
 .game-image { min-height: 270px; position: relative; overflow: hidden; background: #16251a; }
 
@@ -382,7 +383,17 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   padding-top: 0;
   margin-top: 0; /* remove the existing -20px */
 }
+#games {
+  padding-top: 0;
+}
 
+#about {
+  padding-top: 0;
+}
+
+#contact {
+  padding-top: 0;
+}
 .featured-group-card {
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr) auto;
