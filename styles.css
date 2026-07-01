@@ -225,6 +225,22 @@ h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -
 .philosophy-grid, .contact-cards { display: grid; gap: 14px; }
 .info-card, .contact-card { min-height: 170px; padding: 22px; background: var(--surface); }
 
+.verified-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.verified-badge {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 .icon {
   display: inline-block;
   margin-bottom: 14px;
