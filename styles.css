@@ -95,7 +95,7 @@ section { padding: 54px 0; content-visibility: auto; contain-intrinsic-size: 700
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--border-blue);
   box-shadow: var(--shadow-lg);
 }
