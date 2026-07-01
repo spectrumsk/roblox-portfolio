@@ -310,22 +310,18 @@ const worm = data.games.find(g => g.id === 5241473212);
       }
 if (brainrot) {
   const brainrotVisitsEl = document.getElementById('brainrot-visits');
-  const brainrotRatingEl = document.getElementById('brainrot-rating');
-  const brainrotFavoritesEl = document.getElementById('brainrot-favorites');
 
-  if (brainrotVisitsEl) brainrotVisitsEl.innerText = formatMetric(brainrot.visits) + " Visits";
-  if (brainrotRatingEl && brainrot.rating) brainrotRatingEl.innerText = brainrot.rating + "%";
-  if (brainrotFavoritesEl && brainrot.favorites) brainrotFavoritesEl.innerText = formatMetric(brainrot.favorites);
+  if (brainrotVisitsEl) {
+    brainrotVisitsEl.innerText = formatMetric(brainrot.visits) + " Visits";
+  }
 }
 
 if (worm) {
   const wormVisitsEl = document.getElementById('worm-visits');
-  const wormRatingEl = document.getElementById('worm-rating');
-  const wormFavoritesEl = document.getElementById('worm-favorites');
 
-  if (wormVisitsEl) wormVisitsEl.innerText = formatMetric(worm.visits) + " Visits";
-  if (wormRatingEl && worm.rating) wormRatingEl.innerText = worm.rating + "%";
-  if (wormFavoritesEl && worm.favorites) wormFavoritesEl.innerText = formatMetric(worm.favorites);
+  if (wormVisitsEl) {
+    wormVisitsEl.innerText = formatMetric(worm.visits) + " Visits";
+  }
 }
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
