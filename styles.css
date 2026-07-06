@@ -486,6 +486,14 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   margin-left: 8px;
 }
 
+/* Offset anchor links for sticky navigation */
+
+#games,
+#about,
+#contact {
+  scroll-margin-top: 110px;
+}
+
 @media (max-width: 768px) {
   .featured-group-card {
     grid-template-columns: 1fr;
