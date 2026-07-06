@@ -471,6 +471,21 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   justify-self: end;
   white-space: nowrap;
 }
+.group-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.group-verified-badge {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+}
 
 @media (max-width: 768px) {
   .featured-group-card {
