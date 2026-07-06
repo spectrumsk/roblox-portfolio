@@ -19,6 +19,30 @@
 <link rel="icon" href="assets/logo-mark.png" type="image/png">
 <link rel="preload" as="image" href="assets/full-logo.png" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .stat,
+  .mini-stat {
+    text-align: center;
+  }
+
+  .stat strong,
+  .stat span,
+  .mini-stat strong,
+  .mini-stat span {
+    display: block;
+    text-align: center;
+  }
+
+  .extra-groups {
+    display: grid;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .extra-groups[hidden] {
+    display: none;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#top">Skip to content</a>
@@ -82,6 +106,7 @@
           <div class="pill" id="archer-visits">4.1M Visits</div>
           <h2>Archer Training</h2>
           <div class="mini-stats">
+            <div class="mini-stat"><strong id="archer-visits-mini">4.1M</strong><span>Total Plays</span></div>
             <div class="mini-stat"><strong id="archer-playing">750</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong id="archer-rating">98%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="archer-favorites">250K</strong><span>Favorites</span></div>
@@ -99,7 +124,9 @@
           <div class="pill" id="tower-visits">219K Visits</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-                      <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="tower-visits-mini">219K</strong><span>Total Plays</span></div>
+            <div class="mini-stat"><strong id="tower-playing">0</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
@@ -123,6 +150,14 @@
         <h2>Climb Scary Alien Worm Tower</h2>
 
         <div class="mini-stats">
+          <div class="mini-stat">
+            <strong id="worm-visits-mini">77K</strong>
+            <span>Total Plays</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="worm-playing">0</strong>
+            <span>Active Players</span>
+          </div>
           <div class="mini-stat">
             <strong id="worm-rating">89%</strong>
             <span>Rating</span>
@@ -154,6 +189,14 @@
 
         <div class="mini-stats">
           <div class="mini-stat">
+            <strong id="brainrot-visits-mini">14K</strong>
+            <span>Total Plays</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="brainrot-playing">0</strong>
+            <span>Active Players</span>
+          </div>
+          <div class="mini-stat">
             <strong id="brainrot-rating">68%</strong>
             <span>Rating</span>
           </div>
@@ -178,7 +221,7 @@
   </section>
 
   <section class="shell group-section">
-  <div class="section-title">Featured Group</div>
+  <div class="section-title">Featured Groups</div>
 
   <article class="card featured-group-card">
     <div class="featured-group-image">
@@ -202,6 +245,58 @@
       View Group ↗
     </a>
   </article>
+
+  <div class="extra-groups" id="extra-groups" hidden>
+    <article class="card featured-group-card">
+      <div class="featured-group-image">
+        <img
+          src="assets/logo-mark.png"
+          alt="Shadowstar Studios Logo"
+        />
+      </div>
+
+      <div class="featured-group-content">
+        <div class="pill">Group</div>
+        <h2>Shadowstar Studios</h2>
+      </div>
+
+      <a
+        class="btn featured-group-btn"
+        href="https://www.roblox.com/communities/16161064/Shadowstar-Studios#!/about"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        View Group ↗
+      </a>
+    </article>
+
+    <article class="card featured-group-card">
+      <div class="featured-group-image">
+        <img
+          src="assets/logo-mark.png"
+          alt="Brainrot Guard Towers Logo"
+        />
+      </div>
+
+      <div class="featured-group-content">
+        <div class="pill">Group</div>
+        <h2>Brainrot Guard Towers</h2>
+      </div>
+
+      <a
+        class="btn featured-group-btn"
+        href="https://www.roblox.com/communities/716639279/Brainrot-Guard-Towers#!/about"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        View Group ↗
+      </a>
+    </article>
+  </div>
+
+  <div class="see-more-wrap">
+    <button class="btn group-see-more-btn" type="button" aria-controls="extra-groups" aria-expanded="false">See More</button>
+  </div>
 </section>
 
   <section class="shell" id="about">
@@ -252,25 +347,6 @@
     </div>
 
     <div class="contact-cards">
-      <a class="card contact-card" href="mailto:hey@shadowstarstudios.com">
-       <div class="icon" aria-hidden="true">
-  <svg
-    class="contact-icon-svg"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 6h16v12H4z"/>
-    <path d="M4 7l8 6 8-6"/>
-  </svg>
-</div>
-        <h3>Email</h3>
-        <p>hey@shadowstarstudios.com</p>
-      </a>
-
       <div class="card contact-card">
         <div class="icon" aria-hidden="true">
           <svg class="contact-icon-svg" fill="currentColor" viewBox="0 0 127.14 96.36" xmlns="http://www.w3.org/2000/svg">
@@ -327,26 +403,54 @@
     });
   }
 
+
+  const groupSeeMoreButton = document.querySelector('.group-see-more-btn');
+  const extraGroups = document.querySelector('#extra-groups');
+  if (groupSeeMoreButton && extraGroups) {
+    groupSeeMoreButton.addEventListener('click', () => {
+      const expanded = groupSeeMoreButton.getAttribute('aria-expanded') === 'true';
+
+      if (!expanded) {
+        extraGroups.hidden = false;
+        extraGroups.offsetHeight;
+        extraGroups.classList.add('is-visible');
+      } else {
+        extraGroups.classList.remove('is-visible');
+        setTimeout(() => {
+          if (groupSeeMoreButton.getAttribute('aria-expanded') === 'false') extraGroups.hidden = true;
+        }, 250);
+      }
+
+      groupSeeMoreButton.setAttribute('aria-expanded', String(!expanded));
+      groupSeeMoreButton.textContent = expanded ? 'See More' : 'Show Less';
+    });
+  }
+
   async function fetchLiveRobloxStats() {
+    const controller = new AbortController();
+    let timeout;
+
     try {
- const controller = new AbortController();
-const timeout = setTimeout(() => controller.abort(), 5000);
+      timeout = setTimeout(() => controller.abort(), 5000);
 
-const response = await fetch(
-  'https://roblox-portfolio-alpha-one.vercel.app/api/roblox-stats',
-  { signal: controller.signal }
-);
+      const response = await fetch(
+        'https://roblox-portfolio-alpha-one.vercel.app/api/roblox-stats',
+        { signal: controller.signal }
+      );
 
-clearTimeout(timeout);
       if (!response.ok) return;
       const data = await response.json();
       if (!data || data.error) return;
 
-      const formatMetric = (num) => {
+      const formatMetric = (num, options = {}) => {
         if (!num || isNaN(num)) return "0";
-        if (num >= 1e9) return (num / 1e9).toFixed(1).replace('.0', '') + 'B';
-        if (num >= 1e6) return (num / 1e6).toFixed(1).replace('.0', '') + 'M';
-        if (num >= 1e3) return (num / 1e3).toFixed(1).replace('.0', '') + 'K';
+
+        const noDecimals = options.noDecimals === true;
+
+        if (num >= 1e9) return (num / 1e9).toFixed(noDecimals ? 0 : 1).replace('.0', '') + 'B';
+        if (num >= 1e6) return (num / 1e6).toFixed(noDecimals ? 0 : 1).replace('.0', '') + 'M';
+        if (num >= 1e3) return (num / 1e3).toFixed(noDecimals ? 0 : 1).replace('.0', '') + 'K';
+
         return num.toLocaleString();
       };
 
@@ -368,7 +472,7 @@ clearTimeout(timeout);
       // Reserved for a future "Current Players" hero stat.
 const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers));
+if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers, { noDecimals: true }));
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
 // Live active players (kept for future use)
@@ -383,6 +487,7 @@ setEl('hero-playing', peakConcurrent);
   if (!prefix) return;
 
   setEl(`${prefix}-visits`, formatMetric(g.visits) + " Visits");
+  setEl(`${prefix}-visits-mini`, formatMetric(g.visits));
   setEl(`${prefix}-playing`, formatMetric(g.playing));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
@@ -390,14 +495,13 @@ setEl('hero-playing', peakConcurrent);
 
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
-        groupMembersEl.innerText = formatMetric(data.groupMembers) + " Members";
+        groupMembersEl.innerText = formatMetric(data.groupMembers, { noDecimals: true }) + " Members";
       }
 
     } catch (err) {
       console.warn("API proxy unreachable.", err);
-       } finally {
-    clearTimeout(timeout);
-      
+    } finally {
+      clearTimeout(timeout);
     }
   }
   window.addEventListener('DOMContentLoaded', fetchLiveRobloxStats);
