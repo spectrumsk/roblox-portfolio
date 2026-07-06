@@ -42,6 +42,10 @@
   .extra-groups[hidden] {
     display: none;
   }
+
+  .group-see-more-wrap {
+    margin-top: 28px;
+  }
 </style>
 </head>
 <body>
@@ -103,10 +107,9 @@
                alt="Archer Training Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="archer-visits">4.1M Visits</div>
+          <div class="pill" id="archer-visits">4.1M Total Plays</div>
           <h2>Archer Training</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="archer-visits-mini">4.1M</strong><span>Total Plays</span></div>
             <div class="mini-stat"><strong id="archer-playing">750</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong id="archer-rating">98%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="archer-favorites">250K</strong><span>Favorites</span></div>
@@ -121,10 +124,9 @@
                alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="tower-visits">219K Visits</div>
+          <div class="pill" id="tower-visits">219K Total Plays</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="tower-visits-mini">219K</strong><span>Total Plays</span></div>
             <div class="mini-stat"><strong id="tower-playing">0</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
@@ -146,14 +148,10 @@
       </div>
 
       <div class="game-content">
-        <div class="pill" id="worm-visits">77K Visits</div>
+        <div class="pill" id="worm-visits">77K Total Plays</div>
         <h2>Climb Scary Alien Worm Tower</h2>
 
         <div class="mini-stats">
-          <div class="mini-stat">
-            <strong id="worm-visits-mini">77K</strong>
-            <span>Total Plays</span>
-          </div>
           <div class="mini-stat">
             <strong id="worm-playing">0</strong>
             <span>Active Players</span>
@@ -184,14 +182,10 @@
       </div>
 
       <div class="game-content">
-        <div class="pill" id="brainrot-visits">14K Visits</div>
+        <div class="pill" id="brainrot-visits">14K Total Plays</div>
         <h2>Brainrot Tower Go Up</h2>
 
         <div class="mini-stats">
-          <div class="mini-stat">
-            <strong id="brainrot-visits-mini">14K</strong>
-            <span>Total Plays</span>
-          </div>
           <div class="mini-stat">
             <strong id="brainrot-playing">0</strong>
             <span>Active Players</span>
@@ -250,13 +244,13 @@
     <article class="card featured-group-card">
       <div class="featured-group-image">
         <img
-          src="assets/logo-mark.png"
+          src="https://tr.rbxcdn.com/180DAY-96a36daea2df7e8b6e714c95af8ab51e/420/420/Image/Webp/noFilter"
           alt="Shadowstar Studios Logo"
         />
       </div>
 
       <div class="featured-group-content">
-        <div class="pill">Group</div>
+        <div class="pill">7,913 Members</div>
         <h2>Shadowstar Studios</h2>
       </div>
 
@@ -273,13 +267,13 @@
     <article class="card featured-group-card">
       <div class="featured-group-image">
         <img
-          src="assets/logo-mark.png"
+          src="https://tr.rbxcdn.com/180DAY-c4174c57df9c28507ac4ca09015ed53b/420/420/Image/Webp/noFilter"
           alt="Brainrot Guard Towers Logo"
         />
       </div>
 
       <div class="featured-group-content">
-        <div class="pill">Group</div>
+        <div class="pill">7,968 Members</div>
         <h2>Brainrot Guard Towers</h2>
       </div>
 
@@ -294,7 +288,7 @@
     </article>
   </div>
 
-  <div class="see-more-wrap">
+  <div class="see-more-wrap group-see-more-wrap">
     <button class="btn group-see-more-btn" type="button" aria-controls="extra-groups" aria-expanded="false">See More</button>
   </div>
 </section>
@@ -486,8 +480,7 @@ setEl('hero-playing', peakConcurrent);
   const prefix = gameMap[g.id];
   if (!prefix) return;
 
-  setEl(`${prefix}-visits`, formatMetric(g.visits) + " Visits");
-  setEl(`${prefix}-visits-mini`, formatMetric(g.visits));
+  setEl(`${prefix}-visits`, formatMetric(g.visits) + " Total Plays");
   setEl(`${prefix}-playing`, formatMetric(g.playing));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
