@@ -127,7 +127,6 @@
           <div class="pill" id="tower-visits">219K Total Plays</div>
           <h2>Tower Builders</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="tower-playing">0</strong><span>Active Players</span></div>
             <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
           </div>
@@ -152,10 +151,6 @@
         <h2>Climb Scary Alien Worm Tower</h2>
 
         <div class="mini-stats">
-          <div class="mini-stat">
-            <strong id="worm-playing">0</strong>
-            <span>Active Players</span>
-          </div>
           <div class="mini-stat">
             <strong id="worm-rating">89%</strong>
             <span>Rating</span>
@@ -186,10 +181,6 @@
         <h2>Brainrot Tower Go Up</h2>
 
         <div class="mini-stats">
-          <div class="mini-stat">
-            <strong id="brainrot-playing">0</strong>
-            <span>Active Players</span>
-          </div>
           <div class="mini-stat">
             <strong id="brainrot-rating">68%</strong>
             <span>Rating</span>
@@ -481,7 +472,7 @@ setEl('hero-playing', peakConcurrent);
   if (!prefix) return;
 
   setEl(`${prefix}-visits`, formatMetric(g.visits) + " Total Plays");
-  setEl(`${prefix}-playing`, formatMetric(g.playing));
+  if (prefix === "archer") setEl(`${prefix}-playing`, formatMetric(g.playing));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
 });
