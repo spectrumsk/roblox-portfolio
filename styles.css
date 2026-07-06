@@ -474,14 +474,14 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 .group-title {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   margin: 0;
   line-height: 1.05;
 }
 
 .group-verified-badge {
-  width: 18px;
-  height: 18px;
+  width: 0.9em;
+  height: 0.9em;
   flex-shrink: 0;
   object-fit: contain;
   display: block;
