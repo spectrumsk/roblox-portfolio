@@ -18,11 +18,18 @@
   --radius-lg: 22px;
   --max: 1180px;
   --ease: 200ms ease;
-  --nav-offset: 110px;
+
+  /* Sticky navigation */
+  --nav-height: 92px;
+  --scroll-buffer: 24px;
+  --anchor-offset: calc(var(--nav-height) + var(--scroll-buffer));
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--anchor-offset);
+}
 
 body {
   min-height: 100vh;
@@ -421,17 +428,6 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   padding-top: 0;
   margin-top: 0; /* remove the existing -20px */
 }
-#games {
-  padding-top: 0;
-}
-
-#about {
-  padding-top: 20px;
-}
-
-#contact {
-  padding-top: 20px;
-}
 .featured-group-card {
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr) auto;
@@ -489,15 +485,14 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 
 /* Offset anchor links for sticky navigation */
 
-#games,
-#about,
-#contact {
-  scroll-margin-top: var(--nav-offset);
+section[id] {
+  scroll-margin-top: var(--anchor-offset);
 }
 
 @media (max-width: 768px) {
   :root {
-    --nav-offset: 95px;
+    --nav-height: 76px;
+    --scroll-buffer: 18px;
   }
 
   .featured-group-card {
