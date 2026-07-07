@@ -419,8 +419,9 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 
 .group-section {
   padding-top: 0;
-  margin-top: 0; /* remove the existing -20px */
+  margin-top: 0;
 }
+
 #games {
   padding-top: 0;
 }
