@@ -18,18 +18,11 @@
   --radius-lg: 22px;
   --max: 1180px;
   --ease: 200ms ease;
-  
-   /* Sticky navigation */
-  --nav-height: 92px;
-  --scroll-buffer: 24px;
-  --anchor-offset: calc(var(--nav-height) + var(--scroll-buffer));
+  --nav-offset: 110px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--anchor-offset);
-}
+html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
@@ -432,9 +425,12 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   padding-top: 0;
 }
 
-#about,
+#about {
+  padding-top: 20px;
+}
+
 #contact {
-  padding-top: 24px;
+  padding-top: 20px;
 }
 .featured-group-card {
   display: grid;
@@ -491,10 +487,17 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   margin-left: 8px;
 }
 
+/* Offset anchor links for sticky navigation */
+
+#games,
+#about,
+#contact {
+  scroll-margin-top: var(--nav-offset);
+}
+
 @media (max-width: 768px) {
   :root {
-    --nav-height: 76px;
-    --scroll-buffer: 18px;
+    --nav-offset: 95px;
   }
 
   .featured-group-card {
