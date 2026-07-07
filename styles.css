@@ -18,8 +18,8 @@
   --radius-lg: 22px;
   --max: 1180px;
   --ease: 200ms ease;
-
-  /* Sticky navigation */
+  
+   /* Sticky navigation */
   --nav-height: 92px;
   --scroll-buffer: 24px;
   --anchor-offset: calc(var(--nav-height) + var(--scroll-buffer));
@@ -428,6 +428,14 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   padding-top: 0;
   margin-top: 0; /* remove the existing -20px */
 }
+#games {
+  padding-top: 0;
+}
+
+#about,
+#contact {
+  padding-top: 54px;
+}
 .featured-group-card {
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr) auto;
@@ -481,12 +489,6 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   object-fit: contain;
   display: inline-block;
   margin-left: 8px;
-}
-
-/* Offset anchor links for sticky navigation */
-
-section[id] {
-  scroll-margin-top: var(--anchor-offset);
 }
 
 @media (max-width: 768px) {
