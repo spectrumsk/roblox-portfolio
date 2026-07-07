@@ -434,7 +434,7 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 
 #about,
 #contact {
-  padding-top: 54px;
+  padding-top: 24px;
 }
 .featured-group-card {
   display: grid;
