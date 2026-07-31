@@ -118,24 +118,41 @@
         </div>
       </article>
 
-      <article class="card game-card reverse">
+      <article class="card game-card">
         <div class="game-image">
-          <img src="https://tr.rbxcdn.com/180DAY-f3027201610219a9511cdcb7d28ea781/768/432/Image/Webp/noFilter" 
-               alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <img src="https://tr.rbxcdn.com/180DAY-ac2e977e9cc239192b44a914fb24e91d/768/432/Image/Webp/noFilter"
+               alt="Merge a Zombie Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
         <div class="game-content">
-          <div class="pill" id="tower-visits">219K Total Plays</div>
-          <h2>Tower Builders</h2>
+          <div class="pill" id="zombie-visits">1.2K Total Plays</div>
+          <h2>Merge a Zombie</h2>
           <div class="mini-stats">
-            <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
-            <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
+            <div class="mini-stat"><strong id="zombie-playing">1</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="zombie-rating">90%</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="zombie-favorites">14</strong><span>Favorites</span></div>
           </div>
-          <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
+          <a class="btn" href="https://www.roblox.com/games/132356428066523/Merge-a-Zombie" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
       </article>
 
 <div class="extra-games-wrapper">
   <div class="extra-games" id="extra-games" hidden>
+
+    <article class="card game-card reverse">
+      <div class="game-image">
+        <img src="https://tr.rbxcdn.com/180DAY-f3027201610219a9511cdcb7d28ea781/768/432/Image/Webp/noFilter"
+             alt="Tower Builders Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="game-content">
+        <div class="pill" id="tower-visits">219K Total Plays</div>
+        <h2>Tower Builders</h2>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
+          <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
+        </div>
+        <a class="btn" href="https://www.roblox.com/games/98620396748701/Tower-Builders" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
+      </div>
+    </article>
 
     <article class="card game-card">
       <div class="game-image">
@@ -452,6 +469,7 @@
 
       const gameMap = {
         9807623580: 'archer',
+        10323220670: 'zombie',
         9375088027: 'tower',
         9540316091: 'brainrot',
         9565343275: 'worm'
@@ -478,7 +496,7 @@ setEl('hero-playing', peakConcurrent);
   if (!prefix) return;
 
   setEl(`${prefix}-visits`, formatMetric(g.visits) + " Total Plays");
-  if (prefix === "archer") setEl(`${prefix}-playing`, formatMetric(g.playing));
+  if (prefix === "archer" || prefix === "zombie") setEl(`${prefix}-playing`, formatMetric(g.playing));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
 });

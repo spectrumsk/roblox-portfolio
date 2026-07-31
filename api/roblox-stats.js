@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Content-Type', 'application/json');
 
-  const UNIVERSE_IDS = "9807623580,9375088027,9540316091,9565343275";
+  const UNIVERSE_IDS = "9807623580,10323220670,9375088027,9540316091,9565343275";
   const GROUP_ID = "974814503";
 
   try {
