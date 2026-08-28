@@ -80,7 +80,7 @@
         <div aria-label="Studio statistics" class="stats">
  <div class="stat"><strong id="hero-visits">4.4M</strong><span>Total Plays</span></div>
           <div class="stat"><strong id="hero-playing">3K</strong><span>Peak Concurrent Players</span></div>
-          <div class="stat"><strong id="hero-members">500K</strong><span>Group Members</span></div>
+          <div class="stat"><strong id="hero-members">812K</strong><span>Group Members</span></div>
          
         </div>
       </div>
@@ -115,6 +115,23 @@
             <div class="mini-stat"><strong id="archer-favorites">250K</strong><span>Favorites</span></div>
           </div>
           <a class="btn" href="https://www.roblox.com/games/131900597150149/Archer-Training" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
+        </div>
+      </article>
+
+      <article class="card game-card">
+        <div class="game-image">
+          <img src="assets/ping-pong-training.png"
+               alt="Ping Pong Training Gameplay" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="game-content">
+          <div class="pill" id="pingpong-visits">1.5K Total Plays</div>
+          <h2>Ping Pong Training</h2>
+          <div class="mini-stats">
+            <div class="mini-stat"><strong id="pingpong-playing">35</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="pingpong-rating">100%</strong><span>Rating</span></div>
+            <div class="mini-stat"><strong id="pingpong-favorites">18</strong><span>Favorites</span></div>
+          </div>
+          <a class="btn" href="https://www.roblox.com/games/137737622318848/Ping-Pong-Training" rel="noopener noreferrer" target="_blank">Play on Roblox ↗</a>
         </div>
       </article>
 
@@ -223,7 +240,7 @@
   </section>
 
  <section class="shell group-section" id="groups">
-  <div class="section-title">Featured Group</div>
+  <div class="section-title">Featured Groups</div>
 
   <article class="card featured-group-card">
     <div class="featured-group-image">
@@ -247,6 +264,29 @@
     <a
       class="btn featured-group-btn"
       href="https://www.roblox.com/communities/974814503/Assassins-Inc#!/about"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      View Group ↗
+    </a>
+  </article>
+
+  <article class="card featured-group-card">
+    <div class="featured-group-image">
+      <img
+        src="assets/training-university-logo.png"
+        alt="Training University Logo"
+      />
+    </div>
+
+    <div class="featured-group-content">
+      <div class="pill" id="training-group-pill-members">117 Members</div>
+      <h2>Training University</h2>
+    </div>
+
+    <a
+      class="btn featured-group-btn"
+      href="https://www.roblox.com/communities/632335719/Training-University#!/about"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -469,6 +509,7 @@
 
       const gameMap = {
         9807623580: 'archer',
+        10628526114: 'pingpong',
         10323220670: 'zombie',
         9375088027: 'tower',
         9540316091: 'brainrot',
@@ -481,7 +522,10 @@
       // Reserved for a future "Current Players" hero stat.
 const totalPlaying = data.games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-if (data.groupMembers) setEl('hero-members', formatMetric(data.groupMembers, { noDecimals: true }));
+const totalGroupMembers = (data.groupMembers || 0) + (data.trainingGroupMembers || 0);
+if (data.trainingGroupMembers != null && totalGroupMembers > 0) {
+  setEl('hero-members', formatMetric(totalGroupMembers, { noDecimals: true }));
+}
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
 // Live active players (kept for future use)
@@ -496,7 +540,7 @@ setEl('hero-playing', peakConcurrent);
   if (!prefix) return;
 
   setEl(`${prefix}-visits`, formatMetric(g.visits) + " Total Plays");
-  if (prefix === "archer" || prefix === "zombie") setEl(`${prefix}-playing`, formatMetric(g.playing));
+  if (prefix === "archer" || prefix === "pingpong" || prefix === "zombie") setEl(`${prefix}-playing`, formatMetric(g.playing));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
 });
@@ -504,6 +548,11 @@ setEl('hero-playing', peakConcurrent);
       const groupMembersEl = document.getElementById('group-pill-members');
       if (groupMembersEl && data.groupMembers) {
         groupMembersEl.innerText = formatMetric(data.groupMembers, { noDecimals: true }) + " Members";
+      }
+
+      const trainingGroupMembersEl = document.getElementById('training-group-pill-members');
+      if (trainingGroupMembersEl && data.trainingGroupMembers) {
+        trainingGroupMembersEl.innerText = formatMetric(data.trainingGroupMembers, { noDecimals: true }) + " Members";
       }
 
     } catch (err) {

@@ -442,6 +442,10 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   min-height: 180px;
 }
 
+.group-section > .featured-group-card + .featured-group-card {
+  margin-top: 18px;
+}
+
 .featured-group-image {
   width: 160px;
   height: 160px;
