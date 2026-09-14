@@ -208,7 +208,7 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: min(680px, 100%); margin: 32px auto 0; }
 .stat { min-width: 0; padding: clamp(12px, 3vw, 18px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.035); }
 .stat strong { display: block; color: var(--blue); font-size: clamp(1.35rem, 8vw, 2.05rem); line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
-.stat > span { display: block; margin-top: 6px; color: var(--muted); font-size: clamp(0.66rem, 2.7vw, 0.9rem); line-height: 1.25; }
+.stat span { display: block; margin-top: 6px; color: var(--muted); font-size: clamp(0.66rem, 2.7vw, 0.9rem); line-height: 1.25; }
 
 .ticker { margin-top: 32px; overflow: hidden; border-block: 1px solid rgba(47, 140, 255, 0.28); background: rgba(5, 10, 18, 0.78); box-shadow: 0 0 32px rgba(47, 140, 255, 0.18); }
 .ticker-track { display: flex; width: max-content; animation: scroll 32s linear infinite; will-change: transform; }
@@ -239,7 +239,7 @@ h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -
 .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
 .mini-stat { padding-left: 12px; border-left: 1px solid rgba(255, 255, 255, 0.1); }
 .mini-stat strong { display: block; font-size: 1.08rem; }
-.mini-stat > span { color: var(--muted); font-size: 0.78rem; }
+.mini-stat span { color: var(--muted); font-size: 0.78rem; }
 
 
 .about-grid, .contact-grid { display: grid; gap: 20px; }
@@ -521,29 +521,4 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   .featured-group-btn {
     justify-self: center;
   }
-}
-
-/* Reserve space for live values while keeping their labels readable. */
-.live-stat {
-  display: inline-block;
-  min-width: 3ch;
-  font-variant-numeric: tabular-nums;
-  vertical-align: baseline;
-}
-.pill > .live-stat {
-  margin-inline-end: 0.35em;
-}
-.js .live-stat.is-loading {
-  color: transparent;
-  border-radius: 0.18em;
-  background: linear-gradient(100deg, rgba(255,255,255,.07) 20%, rgba(255,255,255,.18) 45%, rgba(255,255,255,.07) 70%);
-  background-size: 250% 100%;
-  animation: stat-shimmer 1.6s ease-in-out infinite;
-}
-@keyframes stat-shimmer {
-  from { background-position: 100% 0; }
-  to { background-position: -100% 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .js .live-stat.is-loading { animation: none; }
 }
