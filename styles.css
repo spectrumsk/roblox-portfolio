@@ -530,6 +530,9 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   font-variant-numeric: tabular-nums;
   vertical-align: baseline;
 }
+.pill > .live-stat {
+  margin-inline-end: 0.35em;
+}
 .js .live-stat.is-loading {
   color: transparent;
   border-radius: 0.18em;
