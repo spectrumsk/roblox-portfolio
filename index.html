@@ -304,7 +304,7 @@
       </div>
 
       <div class="featured-group-content">
-      <div class="pill">7.9K Members</div>
+      <div class="pill" id="shadowstar-group-pill-members">7.9K Members</div>
         <h2>Shadowstar Studios</h2>
       </div>
 
@@ -553,6 +553,10 @@ setEl('hero-playing', peakConcurrent);
       const trainingGroupMembersEl = document.getElementById('training-group-pill-members');
       if (trainingGroupMembersEl && data.trainingGroupMembers) {
         trainingGroupMembersEl.innerText = formatMetric(data.trainingGroupMembers, { noDecimals: true }) + " Members";
+      }
+
+      if (Number.isFinite(data.shadowstarGroupMembers) && data.shadowstarGroupMembers >= 0) {
+        setEl('shadowstar-group-pill-members', formatMetric(data.shadowstarGroupMembers) + " Members");
       }
 
     } catch (err) {

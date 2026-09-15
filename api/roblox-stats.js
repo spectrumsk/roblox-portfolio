@@ -6,13 +6,17 @@ export default async function handler(req, res) {
   const UNIVERSE_IDS = "9807623580,10628526114,10323220670,9375088027,9540316091,9565343275";
   const GROUP_ID = "974814503";
   const TRAINING_GROUP_ID = "632335719";
+  const SHADOWSTAR_GROUP_ID = "16161064";
 
   try {
-    const [gameResponse, voteResponse, groupResponse, trainingGroupResponse] = await Promise.all([
+    const [gameResponse, voteResponse, groupResponse, trainingGroupResponse, shadowstarGroupData] = await Promise.all([
       fetch(`https://games.roblox.com/v1/games?universeIds=${UNIVERSE_IDS}`),
       fetch(`https://games.roblox.com/v1/games/votes?universeIds=${UNIVERSE_IDS}`),
       fetch(`https://groups.roblox.com/v1/groups/${GROUP_ID}`),
-      fetch(`https://groups.roblox.com/v1/groups/${TRAINING_GROUP_ID}`)
+      fetch(`https://groups.roblox.com/v1/groups/${TRAINING_GROUP_ID}`),
+      fetch(`https://groups.roblox.com/v1/groups/${SHADOWSTAR_GROUP_ID}`, { signal: AbortSignal.timeout(3000) })
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null)
     ]);
 
     const gameData = await gameResponse.json();
@@ -35,7 +39,9 @@ export default async function handler(req, res) {
     return res.status(200).json({
       games,
       groupMembers: groupData.memberCount || 0,
-      trainingGroupMembers: trainingGroupData.memberCount || 0
+      trainingGroupMembers: trainingGroupData.memberCount || 0,
+      shadowstarGroupMembers: Number.isFinite(shadowstarGroupData?.memberCount)
+        ? shadowstarGroupData.memberCount : null
     });
 
   } catch (error) {
