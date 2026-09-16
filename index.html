@@ -304,7 +304,7 @@
       </div>
 
       <div class="featured-group-content">
-      <div class="pill" id="shadowstar-group-pill-members">7.9K Members</div>
+      <div class="pill" id="shadowstar-group-pill-members">8K Members</div>
         <h2>Shadowstar Studios</h2>
       </div>
 
@@ -327,7 +327,7 @@
       </div>
 
       <div class="featured-group-content">
-      <div class="pill">8.0K Members</div>
+      <div class="pill">8K Members</div>
         <h2>Brainrot Guard Towers</h2>
       </div>
 
@@ -556,7 +556,7 @@ setEl('hero-playing', peakConcurrent);
       }
 
       if (Number.isFinite(data.shadowstarGroupMembers) && data.shadowstarGroupMembers >= 0) {
-        setEl('shadowstar-group-pill-members', formatMetric(data.shadowstarGroupMembers) + " Members");
+        setEl('shadowstar-group-pill-members', formatMetric(data.shadowstarGroupMembers, { noDecimals: true }) + " Members");
       }
 
     } catch (err) {
