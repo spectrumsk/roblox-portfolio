@@ -540,7 +540,7 @@ setEl('hero-playing', peakConcurrent);
   if (!prefix) return;
 
   setEl(`${prefix}-visits`, formatMetric(g.visits) + " Total Plays");
-  if (prefix === "archer" || prefix === "pingpong" || prefix === "zombie") setEl(`${prefix}-playing`, formatMetric(g.playing));
+  if (Number.isFinite(g.playing)) setEl(`${prefix}-playing`, g.playing.toLocaleString('en-US'));
   setEl(`${prefix}-favorites`, formatMetric(g.favoritedCount));
   setEl(`${prefix}-rating`, g.rating != null ? g.rating + "%" : "--");
 });
