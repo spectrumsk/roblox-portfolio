@@ -1,3 +1,35 @@
+export async function savePingPongPeak(playing) {
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
+  if (!url || !token) return 4500;
+  const candidate = Number.isSafeInteger(playing) && playing >= 0 ? playing : 0;
+  try {
+    // Redis executes this comparison and write atomically, so concurrent requests
+    // cannot overwrite a higher peak. No expiration: retain it across deployments.
+    const script = `
+      local saved = tonumber(redis.call('GET', KEYS[1])) or 4500
+      local peak = math.max(4500, saved, tonumber(ARGV[1]))
+      if not redis.call('GET', KEYS[1]) or peak > saved then
+        redis.call('SET', KEYS[1], tostring(peak))
+      end
+      return peak
+    `;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(['EVAL', script, '1', 'pingpong:peak-concurrent', String(candidate)]),
+      signal: AbortSignal.timeout(1500)
+    });
+    if (!response.ok) throw new Error('Peak storage unavailable');
+    const { result, error } = await response.json();
+    if (error || !Number.isSafeInteger(result) || result < 4500) throw new Error('Invalid saved peak');
+    return result;
+  } catch {
+    console.warn('Peak storage unavailable; using 4500 display fallback');
+    return 4500;
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -36,8 +68,13 @@ export default async function handler(req, res) {
       };
     });
 
+    const peakConcurrent = await savePingPongPeak(
+      games.find(game => game.id === 10628526114)?.playing
+    );
+
     return res.status(200).json({
       games,
+      peakConcurrent,
       groupMembers: groupData.memberCount || 0,
       trainingGroupMembers: trainingGroupData.memberCount || 0,
       shadowstarGroupMembers: Number.isFinite(shadowstarGroupData?.memberCount)

@@ -518,17 +518,16 @@
 
    const totalVisits = data.games.reduce((sum, game) => sum + (game.visits || 0), 0);
 
-const pingPongPlaying = data.games.find(game => game.id === 10628526114)?.playing;
-
 const totalGroupMembers = (data.groupMembers || 0) + (data.trainingGroupMembers || 0) + (data.shadowstarGroupMembers || 0) + 8000;
 if ([data.groupMembers, data.trainingGroupMembers, data.shadowstarGroupMembers].every(Number.isFinite)) {
   setEl('hero-members', formatMetric(totalGroupMembers, { noDecimals: true }));
 }
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
-// Use the baseline peak or Ping Pong Training's current count, whichever is higher.
-const peakConcurrent = Math.max(4500, Number.isFinite(pingPongPlaying) ? pingPongPlaying : 0);
-setEl('hero-playing', formatMetric(peakConcurrent));
+// Display the persistent peak; retain the 4.5K fallback if unavailable.
+if (Number.isSafeInteger(data.peakConcurrent) && data.peakConcurrent >= 4500) {
+  setEl('hero-playing', formatMetric(data.peakConcurrent));
+}
 
   data.games.forEach(g => {
   const prefix = gameMap[g.id];
