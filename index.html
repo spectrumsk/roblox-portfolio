@@ -79,7 +79,7 @@
         
         <div aria-label="Studio statistics" class="stats">
  <div class="stat"><strong id="hero-visits">7.0M</strong><span>Total Plays</span></div>
-          <div class="stat"><strong id="hero-playing">3.5K</strong><span>Peak Concurrent Players</span></div>
+          <div class="stat"><strong id="hero-playing">4.5K</strong><span>Peak Concurrent Players</span></div>
           <div class="stat"><strong id="hero-members">812K</strong><span>Group Members</span></div>
          
         </div>
@@ -527,7 +527,7 @@ if ([data.groupMembers, data.trainingGroupMembers, data.shadowstarGroupMembers].
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
 // Use the baseline peak or Ping Pong Training's current count, whichever is higher.
-const peakConcurrent = Math.max(3500, Number.isFinite(pingPongPlaying) ? pingPongPlaying : 0);
+const peakConcurrent = Math.max(4500, Number.isFinite(pingPongPlaying) ? pingPongPlaying : 0);
 setEl('hero-playing', formatMetric(peakConcurrent));
 
   data.games.forEach(g => {
