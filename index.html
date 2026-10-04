@@ -63,6 +63,7 @@
 </button>
     <div class="nav-links" id="primary-menu">
       <a href="#games">Games</a>
+      <a href="#groups">Groups</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a class="nav-cta" href="https://www.roblox.com/users/392930417/profile" rel="noopener noreferrer" target="_blank">Roblox Profile ↗</a>
@@ -98,7 +99,7 @@
   </header>
 
   <section class="shell" id="games">
-    <div class="section-title">Featured Games</div>
+    <div class="section-title">Games</div>
     <div class="game-stack">
       
       <article class="card game-card">
@@ -239,8 +240,26 @@
     </div>
   </section>
 
+  <section class="shell video-section" id="featured-video" aria-labelledby="featured-video-heading">
+    <h2 class="section-title" id="featured-video-heading">Gameplay</h2>
+    <article class="card video-card">
+      <div class="video-player" id="featured-video-player">
+        <button class="video-poster" type="button" aria-label="Play I Became the BEST Ping Pong Players in Roblox! by RoBros">
+          <img src="https://i.ytimg.com/vi/iDd4cyzkYCk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+          <span class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        </button>
+      </div>
+      <div class="video-content">
+        <span class="pill">Influencer Spotlight</span>
+        <h3>I Became the BEST Ping Pong Players in Roblox!</h3>
+        <p>Watch <strong class="video-creator">Foltyn</strong> play Ping Pong Training.</p>
+        <p class="video-credit">Video by <a href="https://www.youtube.com/watch?v=iDd4cyzkYCk" target="_blank" rel="noopener noreferrer">RoBros ↗</a></p>
+      </div>
+    </article>
+  </section>
+
  <section class="shell group-section" id="groups">
-  <div class="section-title">Featured Groups</div>
+  <div class="section-title">Groups</div>
 
   <article class="card featured-group-card">
     <div class="featured-group-image">
@@ -421,6 +440,17 @@
 </footer>
 
 <script>
+  document.querySelector('.video-poster').addEventListener('click', () => {
+    const player = document.createElement('iframe');
+    player.src = 'https://www.youtube-nocookie.com/embed/iDd4cyzkYCk?autoplay=1';
+    player.title = 'I Became the BEST Ping Pong Players in Roblox! by RoBros';
+    player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    player.allowFullscreen = true;
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    document.querySelector('#featured-video-player').replaceChildren(player);
+    player.focus();
+  });
+
   // Script handles menu toggle, "See More" button, and API data fetching
   const navButton = document.querySelector('.menu-button');
   const navMenu = document.querySelector('#primary-menu');

@@ -216,10 +216,33 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
 .ticker-row span::before { content: "\2022"; margin-right: 24px; color: var(--blue); }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.section-title { margin-bottom: 18px; color: rgba(255, 255, 255, 0.88); font-size: 0.82rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.section-title { margin-bottom: 18px; color: var(--blue-soft); font-size: 0.82rem; letter-spacing: 0.11em; text-transform: uppercase; }
 .section-title.blue { color: var(--blue-soft); }
 
 .game-stack { display: grid; gap: 18px; }
+
+.video-section { padding-top: 0; scroll-margin-top: var(--nav-offset); }
+.video-section .section-title { font-weight: 500; line-height: 1.6; }
+.video-card { display: grid; overflow: hidden; }
+.video-card:hover { transform: none; }
+.video-player { position: relative; aspect-ratio: 16 / 9; background: #080b11; }
+.video-poster { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #080b11; color: white; cursor: pointer; overflow: hidden; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--ease); }
+.video-poster::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(0, 0, 0, 0.72)); }
+.video-poster:hover img { transform: scale(1.03); }
+.video-poster:focus-visible { outline-offset: -5px; }
+.video-play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; display: grid; place-items: center; width: 72px; height: 72px; border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 50%; background: var(--blue); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+.video-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-content { align-self: center; }
+.video-content h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; letter-spacing: -0.035em; }
+.video-content p { color: var(--muted); margin-top: 16px; }
+.video-creator { color: #fff; font-weight: 800; text-shadow: 0 0 12px rgba(255, 255, 255, 0.35); }
+.video-content .video-credit { margin-top: 12px; font-size: 0.9rem; }
+.video-credit a { color: var(--blue-soft); }
+.video-credit a:hover { text-decoration: underline; }
+@media (min-width: 900px) {
+  .video-card { grid-template-columns: 1.4fr 1fr; align-items: center; }
+}
 
 .game-card { display: grid; overflow: hidden; }
 .game-image { min-height: 270px; position: relative; overflow: hidden; background: #16251a; }
@@ -231,7 +254,7 @@ h1 { max-width: 760px; font-size: clamp(3.2rem, 16vw, 6.8rem); line-height: 0.92
   transform: scale(1.03);
 }
 
-.game-content { padding: 24px; }
+.game-content, .video-content { padding: 24px; }
 .pill { display: inline-flex; margin-bottom: 14px; padding: 6px 10px; border: 1px solid rgba(47, 140, 255, 0.22); border-radius: 9px; background: rgba(47, 140, 255, 0.18); color: var(--blue-soft); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.03em; text-transform: uppercase; }
 h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.05; letter-spacing: -0.04em; }
 .role-line { margin-top: 8px; color: var(--muted); font-size: 0.94rem; font-weight: 650; }
@@ -351,7 +374,7 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
     order: 2;
   }
 
-  .game-content {
+  .game-content, .video-content {
     align-self: center;
     padding: 38px;
   }
@@ -399,7 +422,7 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
   opacity: 0;
   transform: translateY(-12px);
   transition: opacity 250ms ease, transform 250ms ease;
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   gap: 18px;
 }
@@ -407,6 +430,8 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 .extra-games-wrapper:has(.is-visible) {
   grid-template-rows: 1fr;
 }
+
+.extra-games[hidden] { display: none; }
 
 .extra-games.is-visible {
   opacity: 1;
@@ -495,6 +520,7 @@ footer { padding: 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); color
 /* Offset anchor links for sticky navigation */
 
 #games,
+#groups,
 #about,
 #contact {
   scroll-margin-top: var(--nav-offset);
