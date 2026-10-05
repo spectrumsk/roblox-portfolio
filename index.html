@@ -79,9 +79,9 @@
         <p class="hero-copy-large">Building Roblox experiences played by millions.</p>
         
         <div aria-label="Studio statistics" class="stats">
- <div class="stat"><strong id="hero-visits">8.9M</strong><span>Total Plays</span></div>
-          <div class="stat"><strong id="hero-playing">11.8K</strong><span>Peak Concurrent Players</span></div>
-          <div class="stat"><strong id="hero-members">1M</strong><span>Group Members</span></div>
+ <div class="stat"><strong id="hero-visits">12.5M</strong><span>Total Plays</span></div>
+          <div class="stat"><strong id="hero-playing">15.9K</strong><span>Peak Concurrent Players</span></div>
+          <div class="stat"><strong id="hero-members">1.5M</strong><span>Group Members</span></div>
          
         </div>
       </div>
@@ -554,7 +554,7 @@ if ([data.groupMembers, data.trainingGroupMembers, data.shadowstarGroupMembers].
 }
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
-// Display the persistent peak; retain the 11.8K fallback if unavailable.
+// Display the persistent peak; retain the 15.9K fallback if unavailable.
 if (Number.isSafeInteger(data.peakConcurrent) && data.peakConcurrent >= 4500) {
   setEl('hero-playing', formatMetric(data.peakConcurrent));
 }
