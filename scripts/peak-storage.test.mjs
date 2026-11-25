@@ -7,6 +7,30 @@ const { savePingPongPeak, default: handler } = await import(
   `data:text/javascript;base64,${Buffer.from(source).toString('base64')}`
 );
 
+test('upstream failures do not become successful empty stats', async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    for (const upstream of [
+      { ok: false, json: async () => ({ errors: [{ message: 'Rate limited' }] }) },
+      { ok: true, json: async () => ({ errors: [{ message: 'Unexpected response' }] }) }
+    ]) {
+      globalThis.fetch = async () => upstream;
+      let status;
+      let body;
+      await handler({}, {
+        setHeader() {},
+        status(code) { status = code; return this; },
+        json(value) { body = value; }
+      });
+      assert.equal(status, 500);
+      assert.equal(typeof body.error, 'string');
+      assert.equal(body.games, undefined);
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('saved peak integration and failure isolation', async () => {
   const originalFetch = globalThis.fetch;
   const originalEnv = { url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN };

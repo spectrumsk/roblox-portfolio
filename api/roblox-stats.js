@@ -35,26 +35,37 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Content-Type', 'application/json');
 
-  const UNIVERSE_IDS = "9807623580,10628526114,10323220670,9375088027,9540316091,9565343275";
+  const UNIVERSE_IDS = "9807623580,10628526114,10323220670,9375088027,9540316091,9565343275,10774449334,10776235123";
   const GROUP_ID = "974814503";
   const TRAINING_GROUP_ID = "632335719";
   const SHADOWSTAR_GROUP_ID = "16161064";
 
   try {
-    const [gameResponse, voteResponse, groupResponse, trainingGroupResponse, shadowstarGroupData] = await Promise.all([
+    const [gameResponse, voteResponse, groupResponse, trainingGroupResponse, shadowstarGroupData, sillybilliesGroupData] = await Promise.all([
       fetch(`https://games.roblox.com/v1/games?universeIds=${UNIVERSE_IDS}`),
       fetch(`https://games.roblox.com/v1/games/votes?universeIds=${UNIVERSE_IDS}`),
       fetch(`https://groups.roblox.com/v1/groups/${GROUP_ID}`),
       fetch(`https://groups.roblox.com/v1/groups/${TRAINING_GROUP_ID}`),
       fetch(`https://groups.roblox.com/v1/groups/${SHADOWSTAR_GROUP_ID}`, { signal: AbortSignal.timeout(3000) })
         .then(response => response.ok ? response.json() : null)
+        .catch(() => null),
+      fetch('https://groups.roblox.com/v1/groups/168725073', { signal: AbortSignal.timeout(3000) })
+        .then(response => response.ok ? response.json() : null)
         .catch(() => null)
     ]);
+
+    if (![gameResponse, voteResponse, groupResponse, trainingGroupResponse].every(response => response.ok)) {
+      throw new Error('Roblox API request failed');
+    }
 
     const gameData = await gameResponse.json();
     const voteData = await voteResponse.json();
     const groupData = await groupResponse.json();
     const trainingGroupData = await trainingGroupResponse.json();
+
+    if (!Array.isArray(gameData.data) || !Array.isArray(voteData.data)) {
+      throw new Error('Invalid Roblox game data');
+    }
 
     const games = (gameData.data || []).map(game => {
       const vote = (voteData.data || []).find(v => v.id === game.id);
@@ -78,7 +89,9 @@ export default async function handler(req, res) {
       groupMembers: groupData.memberCount || 0,
       trainingGroupMembers: trainingGroupData.memberCount || 0,
       shadowstarGroupMembers: Number.isFinite(shadowstarGroupData?.memberCount)
-        ? shadowstarGroupData.memberCount : null
+        ? shadowstarGroupData.memberCount : null,
+      sillybilliesGroupMembers: Number.isFinite(sillybilliesGroupData?.memberCount)
+        ? sillybilliesGroupData.memberCount : null
     });
 
   } catch (error) {
