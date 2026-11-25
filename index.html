@@ -80,7 +80,7 @@
         
         <div aria-label="Studio statistics" class="stats">
  <div class="stat"><strong id="hero-visits">12.5M</strong><span>Total Plays</span></div>
-          <div class="stat"><strong id="hero-playing">15.9K</strong><span>Peak Concurrent Players</span></div>
+          <div class="stat"><strong id="hero-playing">--</strong><span>Active Players</span></div>
           <div class="stat"><strong id="hero-members">1.5M</strong><span>Group Members</span></div>
          
         </div>
@@ -112,6 +112,7 @@
           <h2>Ping Pong Training</h2>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="pingpong-playing">4,500</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="pingpong-peak">15.9K</strong><span>Peak CCU</span></div>
             <div class="mini-stat"><strong id="pingpong-rating">100%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="pingpong-favorites">18</strong><span>Favorites</span></div>
           </div>
@@ -129,6 +130,7 @@
           <h2>Archer Training</h2>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="archer-playing">750</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="archer-peak">3.0K</strong><span>Peak CCU</span></div>
             <div class="mini-stat"><strong id="archer-rating">98%</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="archer-favorites">250K</strong><span>Favorites</span></div>
           </div>
@@ -146,6 +148,7 @@
           <h2>+1 Throw a Football</h2>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="football-playing">--</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="football-peak">20</strong><span>Peak CCU</span></div>
             <div class="mini-stat"><strong id="football-rating">--</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="football-favorites">--</strong><span>Favorites</span></div>
           </div>
@@ -163,6 +166,7 @@
           <h2>Paradox Spire</h2>
           <div class="mini-stats">
             <div class="mini-stat"><strong id="paradox-playing">--</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="paradox-peak">20</strong><span>Peak CCU</span></div>
             <div class="mini-stat"><strong id="paradox-rating">--</strong><span>Rating</span></div>
             <div class="mini-stat"><strong id="paradox-favorites">--</strong><span>Favorites</span></div>
           </div>
@@ -183,6 +187,7 @@
         <h2>Merge a Zombie</h2>
         <div class="mini-stats">
           <div class="mini-stat"><strong id="zombie-playing">50</strong><span>Active Players</span></div>
+            <div class="mini-stat"><strong id="zombie-peak">175</strong><span>Peak CCU</span></div>
           <div class="mini-stat"><strong id="zombie-rating">90%</strong><span>Rating</span></div>
           <div class="mini-stat"><strong id="zombie-favorites">14</strong><span>Favorites</span></div>
         </div>
@@ -199,6 +204,7 @@
         <div class="pill" id="tower-visits">219K Total Plays</div>
         <h2>Tower Builders</h2>
         <div class="mini-stats">
+            <div class="mini-stat"><strong id="tower-peak">250</strong><span>Peak CCU</span></div>
           <div class="mini-stat"><strong id="tower-rating">86%</strong><span>Rating</span></div>
           <div class="mini-stat"><strong id="tower-favorites">1.1K</strong><span>Favorites</span></div>
         </div>
@@ -220,6 +226,7 @@
         <h2>Climb Scary Alien Worm Tower</h2>
 
         <div class="mini-stats">
+            <div class="mini-stat"><strong id="worm-peak">90</strong><span>Peak CCU</span></div>
           <div class="mini-stat">
             <strong id="worm-rating">89%</strong>
             <span>Rating</span>
@@ -250,6 +257,7 @@
         <h2>Brainrot Tower Go Up</h2>
 
         <div class="mini-stats">
+            <div class="mini-stat"><strong id="brainrot-peak">70</strong><span>Peak CCU</span></div>
           <div class="mini-stat">
             <strong id="brainrot-rating">68%</strong>
             <span>Rating</span>
@@ -611,9 +619,10 @@ if ([data.groupMembers, data.trainingGroupMembers, data.shadowstarGroupMembers, 
 }
 if (totalVisits > 0) setEl('hero-visits', formatMetric(totalVisits));
 
-// Display the persistent peak; retain the 15.9K fallback if unavailable.
-if (Number.isSafeInteger(data.peakConcurrent) && data.peakConcurrent >= 15859) {
-  setEl('hero-playing', formatMetric(data.peakConcurrent));
+// Show current players across every game, including the collapsed cards.
+if (data.games.length > 0 && data.games.every(game => Number.isSafeInteger(game.playing) && game.playing >= 0)) {
+  const totalPlaying = data.games.reduce((sum, game) => sum + game.playing, 0);
+  setEl('hero-playing', totalPlaying.toLocaleString('en-US'));
 }
 
   data.games.forEach(g => {
