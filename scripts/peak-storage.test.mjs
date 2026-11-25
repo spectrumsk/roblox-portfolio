@@ -3,9 +3,29 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../api/roblox-stats.js', import.meta.url), 'utf8');
-const { savePingPongPeak, default: handler } = await import(
+const { fetchRoblox, savePingPongPeak, default: handler } = await import(
   `data:text/javascript;base64,${Buffer.from(source).toString('base64')}`
 );
+
+test('Roblox fetch retries a transient failure once and bounds each request', async () => {
+  const originalFetch = globalThis.fetch;
+  let calls = 0;
+  try {
+    globalThis.fetch = async (url, options) => {
+      assert.ok(options.signal instanceof AbortSignal);
+      calls++;
+      return { ok: calls === 2, status: calls === 2 ? 200 : 429 };
+    };
+    assert.equal((await fetchRoblox('https://games.roblox.com/test')).status, 200);
+    assert.equal(calls, 2);
+    calls = 0;
+    globalThis.fetch = async () => { calls++; throw new Error('Network unavailable'); };
+    await assert.rejects(fetchRoblox('https://games.roblox.com/test'), /Network unavailable/);
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
 
 test('upstream failures do not become successful empty stats', async () => {
   const originalFetch = globalThis.fetch;

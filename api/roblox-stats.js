@@ -1,3 +1,17 @@
+// Bound upstream latency and retry transient Roblox failures once.
+export async function fetchRoblox(url) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const response = await fetch(url, { signal: AbortSignal.timeout(1500) });
+      if (response.ok) return response;
+      throw new Error(`Roblox ${response.status}: ${url}`);
+    } catch (error) {
+      if (attempt === 1) throw error;
+    }
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+}
+
 export async function savePingPongPeak(playing) {
   const url = process.env.KV_REST_API_URL;
   const token = process.env.KV_REST_API_TOKEN;
@@ -42,14 +56,14 @@ export default async function handler(req, res) {
 
   try {
     const [gameResponse, voteResponse, groupResponse, trainingGroupResponse, shadowstarGroupData, sillybilliesGroupData] = await Promise.all([
-      fetch(`https://games.roblox.com/v1/games?universeIds=${UNIVERSE_IDS}`),
-      fetch(`https://games.roblox.com/v1/games/votes?universeIds=${UNIVERSE_IDS}`),
-      fetch(`https://groups.roblox.com/v1/groups/${GROUP_ID}`),
-      fetch(`https://groups.roblox.com/v1/groups/${TRAINING_GROUP_ID}`),
-      fetch(`https://groups.roblox.com/v1/groups/${SHADOWSTAR_GROUP_ID}`, { signal: AbortSignal.timeout(3000) })
+      fetchRoblox(`https://games.roblox.com/v1/games?universeIds=${UNIVERSE_IDS}`),
+      fetchRoblox(`https://games.roblox.com/v1/games/votes?universeIds=${UNIVERSE_IDS}`),
+      fetchRoblox(`https://groups.roblox.com/v1/groups/${GROUP_ID}`),
+      fetchRoblox(`https://groups.roblox.com/v1/groups/${TRAINING_GROUP_ID}`),
+      fetchRoblox(`https://groups.roblox.com/v1/groups/${SHADOWSTAR_GROUP_ID}`)
         .then(response => response.ok ? response.json() : null)
         .catch(() => null),
-      fetch('https://groups.roblox.com/v1/groups/168725073', { signal: AbortSignal.timeout(3000) })
+      fetchRoblox('https://groups.roblox.com/v1/groups/168725073')
         .then(response => response.ok ? response.json() : null)
         .catch(() => null)
     ]);
@@ -83,6 +97,7 @@ export default async function handler(req, res) {
       games.find(game => game.id === 10628526114)?.playing
     );
 
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=60, stale-while-revalidate=300');
     return res.status(200).json({
       games,
       peakConcurrent,
@@ -95,6 +110,8 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
+    console.error('Roblox stats failed:', error.message);
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(500).json({ error: "Failed to fetch live data from Roblox APIs" });
   }
 }
